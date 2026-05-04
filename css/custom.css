@@ -77,6 +77,36 @@ a, a:hover, .post-title-link, .menu-item-active a {
 }
 
 /* ========================================
+   首页全屏头图 - 浅白半透明磨砂玻璃
+   ======================================== */
+
+#page-header.full_page {
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+}
+
+#page-header.full_page:before {
+    background: none !important;
+    background-image: none !important;
+}
+
+#page-header.full_page #site-title,
+#page-header.full_page #site-subtitle {
+    color: #333 !important;
+    text-shadow: none !important;
+}
+
+[data-theme="dark"] #page-header.full_page {
+    background: rgba(30, 30, 30, 0.4) !important;
+}
+
+[data-theme="dark"] #page-header.full_page #site-title,
+[data-theme="dark"] #page-header.full_page #site-subtitle {
+    color: #ddd !important;
+}
+
+/* ========================================
    导航栏 - 浅白半透明磨砂玻璃
    ======================================== */
 
@@ -113,15 +143,43 @@ a, a:hover, .post-title-link, .menu-item-active a {
    ======================================== */
 
 #footer {
-    background: rgba(255, 255, 255, 0.7) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #333 !important;
+    text-shadow: none !important;
+}
+
+#footer:before {
+    background: none !important;
+    background-image: none !important;
+}
+
+#footer,
+#footer a,
+#footer .copyright,
+#footer .framework-info,
+#footer .footer_custom_text,
+#footer .footer-flex-title,
+#footer .footer-flex-item {
+    color: #333 !important;
+    text-shadow: none !important;
 }
 
 [data-theme="dark"] #footer {
-    background: rgba(30, 30, 30, 0.7) !important;
+    background: rgba(30, 30, 30, 0.4) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] #footer,
+[data-theme="dark"] #footer a,
+[data-theme="dark"] #footer .copyright,
+[data-theme="dark"] #footer .framework-info,
+[data-theme="dark"] #footer .footer_custom_text,
+[data-theme="dark"] #footer .footer-flex-title,
+[data-theme="dark"] #footer .footer-flex-item {
+    color: #aaa !important;
 }
 
 /* ========================================
