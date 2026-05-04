@@ -77,35 +77,51 @@ a, a:hover, .post-title-link, .menu-item-active a {
 }
 
 /* ========================================
-   导航栏
+   导航栏 - 浅白半透明磨砂玻璃
    ======================================== */
 
 #nav {
-    background: rgba(255, 255, 255, 0.65) !important;
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
     transition: all 0.4s ease !important;
 }
 
 #nav.nav-fixed,
 #nav.show {
-    background: rgba(255, 255, 255, 0.88) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    box-shadow: none !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
 }
 
 [data-theme="dark"] #nav {
-    background: rgba(30, 30, 30, 0.65) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    background: rgba(30, 30, 30, 0.7) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 [data-theme="dark"] #nav.nav-fixed,
 [data-theme="dark"] #nav.show {
-    background: rgba(30, 30, 30, 0.88) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(30, 30, 30, 0.7) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ========================================
+   底栏 - 浅白半透明磨砂玻璃
+   ======================================== */
+
+#footer {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-theme="dark"] #footer {
+    background: rgba(30, 30, 30, 0.7) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 /* ========================================
