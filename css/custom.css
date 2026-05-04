@@ -3,6 +3,39 @@
    半透明白 + 现代字体 + 去除所有深蓝色调
    ======================================== */
 
+/* ========================================
+   粒子背景容器
+   ======================================== */
+#particle-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ========================================
+   头部动态渐变背景
+   ======================================== */
+#page-header {
+  position: relative;
+  overflow: hidden;
+}
+
+#page-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 30vh;
+  background: linear-gradient(60deg, rgba(184, 166, 217, 0.25), rgba(200, 180, 220, 0.15), rgba(220, 200, 210, 0.25));
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* 全局背景重置：半透明白，去除所有深蓝色调 */
 body, .main-inner, .content-wrap, #content, .post-block, .sidebar-inner {
     background: rgba(255, 255, 255, 0.88) !important;
@@ -192,6 +225,18 @@ body {
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
+}
+
+/* ========================================
+   Waline 评论区优化
+   ======================================== */
+
+/* 隐藏 Waline v3 登录按钮 */
+.wl-login,
+.wl-user,
+.wl-panel .wl-login,
+.wl-header-item .wl-login-btn {
+  display: none !important;
 }
 
 /* ========================================
