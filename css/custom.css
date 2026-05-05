@@ -86,6 +86,19 @@ a, a:hover, .post-title-link, .menu-item-active a {
   --fu-blue-hover: #1d4ed8;
   --fu-blue-soft: #eff6ff;
   --fu-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+  /* 导航专用 */
+  --fu-nav-bg: rgba(255, 255, 255, 0.72);
+  --fu-nav-bg-solid: rgba(255, 255, 255, 0.9);
+  --fu-nav-text: #1f2937;
+  --fu-nav-text-muted: #374151;
+  --fu-nav-hover: #2563eb;
+  --fu-nav-border: rgba(148, 163, 184, 0.24);
+  --fu-nav-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --fu-dropdown-bg: rgba(255, 255, 255, 0.96);
+  --fu-dropdown-text: #1f2937;
+  --fu-dropdown-hover-bg: rgba(37, 99, 235, 0.08);
+  --fu-dropdown-hover-text: #2563eb;
 }
 
 [data-theme="dark"] {
@@ -109,6 +122,19 @@ a, a:hover, .post-title-link, .menu-item-active a {
   --fu-blue-hover: #93c5fd;
   --fu-blue-soft: rgba(37, 99, 235, 0.16);
   --fu-shadow: 0 10px 28px rgba(0, 0, 0, 0.36);
+
+  /* 导航专用 */
+  --fu-nav-bg: rgba(2, 6, 23, 0.42);
+  --fu-nav-bg-solid: rgba(15, 23, 42, 0.92);
+  --fu-nav-text: rgba(226, 232, 240, 0.94);
+  --fu-nav-text-muted: rgba(203, 213, 225, 0.9);
+  --fu-nav-hover: #93c5fd;
+  --fu-nav-border: rgba(96, 165, 250, 0.18);
+  --fu-nav-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+  --fu-dropdown-bg: rgba(15, 23, 42, 0.96);
+  --fu-dropdown-text: rgba(226, 232, 240, 0.94);
+  --fu-dropdown-hover-bg: rgba(96, 165, 250, 0.12);
+  --fu-dropdown-hover-text: #93c5fd;
 }
 
 /* ========================================
@@ -442,8 +468,8 @@ a, a:hover, .post-title-link, .menu-item-active a,
 .archive-year, .archive-date, .post-meta a,
 .site-data a, .aside-list-item a, .card-archives a, .card-categories a, .card-tags a,
 .author-info-name a, #card-info-btn,
-#nav a, #site-title, #site-subtitle,
-.social-icon a, .fas, .fab {
+/* #nav a / #site-title / #site-subtitle / .fas / .fab 已从全局列表移除，由 FINAL NAV FIX 接管 */
+.social-icon a {
     color: #555 !important;
 }
 
@@ -1566,4 +1592,117 @@ a:hover,
 [data-theme="dark"] .avatar-img img,
 [data-theme="dark"] .card-info-avatar img {
   filter: none !important;
+}
+
+/* ========================================
+   FINAL NAV FIX — light/dark readable
+   放在文件最底部，确保覆盖所有前面的规则
+   ======================================== */
+
+#nav,
+#nav.nav-fixed,
+#nav.show {
+  background: var(--fu-nav-bg) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--fu-nav-border) !important;
+  box-shadow: none !important;
+}
+
+#nav.nav-fixed,
+#nav.show {
+  background: var(--fu-nav-bg-solid) !important;
+  box-shadow: var(--fu-nav-shadow) !important;
+}
+
+/* 顶级导航文字和图标 */
+#nav #site-name,
+#nav .site-name,
+#nav .site-page,
+#nav a,
+#nav .menus_items .menus_item > a,
+#nav .menus_items .menus_item > span,
+#nav .menus_items .menus_item > .site-page {
+  color: var(--fu-nav-text) !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+  transition: color 0.2s ease, background 0.2s ease, text-shadow 0.2s ease;
+}
+
+#nav #site-name:hover,
+#nav .site-name:hover,
+#nav .site-page:hover,
+#nav a:hover,
+#nav .menus_items .menus_item > a:hover,
+#nav .menus_items .menus_item > span:hover,
+#nav .menus_items .menus_item > .site-page:hover {
+  color: var(--fu-nav-hover) !important;
+  text-shadow: 0 0 8px rgba(37, 99, 235, 0.22) !important;
+}
+
+/* 防止全局规则把导航图标染成奇怪的灰色 */
+#nav .fas,
+#nav .fab,
+#nav .far,
+#nav i {
+  color: currentColor !important;
+}
+
+/* 下拉菜单 */
+#nav .menus_items .menus_item_child {
+  background: var(--fu-dropdown-bg) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--fu-nav-border) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--fu-nav-shadow) !important;
+  padding: 6px 0 !important;
+  overflow: hidden;
+}
+
+#nav .menus_items .menus_item_child li,
+#nav .menus_items .menus_item_child li a {
+  background: transparent !important;
+}
+
+#nav .menus_items .menus_item_child li a,
+#nav .menus_items .menus_item_child .site-page {
+  color: var(--fu-dropdown-text) !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+#nav .menus_items .menus_item_child li a:hover,
+#nav .menus_items .menus_item_child .site-page:hover {
+  color: var(--fu-dropdown-hover-text) !important;
+  background: var(--fu-dropdown-hover-bg) !important;
+  text-shadow: 0 0 8px rgba(37, 99, 235, 0.2) !important;
+}
+
+/* 深色模式下拉 hover 用浅色 shadow */
+[data-theme="dark"] #nav a:hover,
+[data-theme="dark"] #nav .menus_items .menus_item > a:hover,
+[data-theme="dark"] #nav .menus_items .menus_item > span:hover {
+  text-shadow: 0 0 8px rgba(147, 197, 253, 0.3) !important;
+}
+
+[data-theme="dark"] #nav .menus_items .menus_item_child li a:hover {
+  text-shadow: 0 0 8px rgba(147, 197, 253, 0.28) !important;
+}
+
+/* 移动端侧边菜单 */
+#sidebar #sidebar-menus,
+#sidebar .menus_items,
+#sidebar .menus_item,
+#sidebar .site-page {
+  color: var(--fu-nav-text) !important;
+}
+
+#sidebar .menus_item_child,
+#sidebar .menus_item_child li a {
+  color: var(--fu-dropdown-text) !important;
+}
+
+[data-theme="dark"] #sidebar #sidebar-menus {
+  background: var(--fu-nav-bg-solid) !important;
 }
