@@ -21,7 +21,7 @@
    ======================================== */
 #page-header {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #page-header::before {
@@ -1705,4 +1705,177 @@ a:hover,
 
 [data-theme="dark"] #sidebar #sidebar-menus {
   background: var(--fu-nav-bg-solid) !important;
+}
+
+/* ========================================
+   FINAL NAV DROPDOWN FIX
+   修复二级菜单 hover 断层 + 隐藏三角箭头
+   ======================================== */
+
+/* 关键：page-header 需要 overflow: visible 否则裁剪下拉菜单 */
+#page-header {
+  overflow: visible !important;
+}
+
+/* 导航层稳定 */
+#nav {
+  z-index: 9998 !important;
+  overflow: visible !important;
+}
+
+#nav .menus_items {
+  overflow: visible !important;
+}
+
+#nav .menus_items .menus_item {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* 顶级导航格式统一，去掉多余间距 */
+#nav .menus_items .menus_item > a,
+#nav .menus_items .menus_item > span,
+#nav .menus_items .menus_item > .site-page {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  padding: 0 0.72rem !important;
+  white-space: nowrap !important;
+}
+
+/* 下拉菜单：opacity + visibility + pointer-events 替代 display:none，避免 hover 瞬断 */
+#nav .menus_items .menus_item_child {
+  display: block !important;
+  position: absolute !important;
+  top: calc(100% - 2px) !important;
+  left: 50% !important;
+  min-width: 136px !important;
+  margin: 0 !important;
+  padding: 6px 0 !important;
+  transform: translateX(-50%) translateY(6px) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  z-index: 10000 !important;
+  transition: opacity 0.16s ease, visibility 0.16s ease, transform 0.16s ease !important;
+}
+
+/* 透明 hover 桥：填补父菜单和下拉菜单之间的间隙 */
+#nav .menus_items .menus_item_child::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: -14px !important;
+  height: 14px !important;
+  background: transparent !important;
+  pointer-events: auto !important;
+}
+
+/* 三层 hover 联动：父菜单或子菜单被 hover 时都保持显示 */
+#nav .menus_items .menus_item:hover > .menus_item_child,
+#nav .menus_items .menus_item:focus-within > .menus_item_child,
+#nav .menus_items .menus_item_child:hover {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+/* 子菜单链接确保可点击 */
+#nav .menus_items .menus_item_child li {
+  display: block !important;
+  position: relative !important;
+  z-index: 10001 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#nav .menus_items .menus_item_child li a,
+#nav .menus_items .menus_item_child .site-page {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 34px !important;
+  padding: 0.48rem 0.9rem !important;
+  line-height: 1.4 !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+/* 隐藏下拉三角 / 箭头 */
+#nav .menus_items .menus_item > a .fa-chevron-down,
+#nav .menus_items .menus_item > span .fa-chevron-down,
+#nav .menus_items .menus_item > .site-page .fa-chevron-down,
+#nav .menus_items .menus_item > a .fa-angle-down,
+#nav .menus_items .menus_item > span .fa-angle-down,
+#nav .menus_items .menus_item > .site-page .fa-angle-down,
+#nav .menus_items .menus_item > a .fa-caret-down,
+#nav .menus_items .menus_item > span .fa-caret-down,
+#nav .menus_items .menus_item > .site-page .fa-caret-down {
+  display: none !important;
+}
+
+/* 禁用伪元素三角 */
+#nav .menus_items .menus_item > a::after,
+#nav .menus_items .menus_item > span::after,
+#nav .menus_items .menus_item > .site-page::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* 禁止箭头旋转动画 */
+#nav .menus_items .menus_item i {
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* 导航图标跟随文字颜色 */
+#nav .fas,
+#nav .far,
+#nav .fab,
+#nav i {
+  color: currentColor !important;
+}
+
+/* 下拉菜单颜色使用变量 */
+#nav .menus_items .menus_item_child {
+  background: var(--fu-dropdown-bg) !important;
+  border: 1px solid var(--fu-nav-border) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--fu-nav-shadow) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+#nav .menus_items .menus_item_child li a,
+#nav .menus_items .menus_item_child .site-page {
+  color: var(--fu-dropdown-text) !important;
+  background: transparent !important;
+  text-shadow: none !important;
+}
+
+#nav .menus_items .menus_item_child li a:hover,
+#nav .menus_items .menus_item_child .site-page:hover {
+  color: var(--fu-dropdown-hover-text) !important;
+  background: var(--fu-dropdown-hover-bg) !important;
+}
+
+/* 移动端不使用桌面 hover 逻辑 */
+@media screen and (max-width: 768px) {
+  #nav .menus_items .menus_item_child {
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  #nav .menus_items .menus_item_child::before {
+    display: none !important;
+  }
 }
