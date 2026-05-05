@@ -762,3 +762,140 @@ a:hover,
   font-size: 14px !important;
   opacity: 0.7 !important;
 }
+
+/* ========================================
+   首页标题可读性增强
+   覆盖之前的深色标题规则，使用冷白色 + 阴影
+   ======================================== */
+#page-header #site-title,
+#site-title {
+  color: #f8fbff !important;
+  font-weight: 700 !important;
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.75),
+    0 0 18px rgba(120, 180, 255, 0.45) !important;
+  letter-spacing: 0.06em;
+}
+
+#page-header #site-subtitle,
+#site-subtitle {
+  color: rgba(248, 251, 255, 0.95) !important;
+  font-weight: 500 !important;
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.72),
+    0 0 14px rgba(120, 180, 255, 0.35) !important;
+}
+
+#page-header::before {
+  background: rgba(0, 0, 0, 0.28) !important;
+}
+
+@media screen and (max-width: 768px) {
+  #page-header #site-title,
+  #site-title {
+    font-size: 2rem !important;
+  }
+  #page-header #site-subtitle,
+  #site-subtitle {
+    font-size: 1rem !important;
+  }
+}
+
+/* ========================================
+   Anime 页面资源卡片
+   ======================================== */
+.anime-hero {
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.5rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(72, 116, 180, 0.18), rgba(30, 35, 55, 0.32));
+  border: 1px solid rgba(160, 190, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.anime-hero h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #d9ecff !important;
+}
+
+.anime-hero blockquote {
+  margin-bottom: 0;
+  border-left-color: rgba(160, 190, 255, 0.35) !important;
+  color: rgba(220, 235, 255, 0.85) !important;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 1rem 0 2rem;
+}
+
+.resource-card {
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(160, 190, 255, 0.16);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+  border-color: rgba(140, 190, 255, 0.42);
+}
+
+.resource-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.45rem;
+  color: #d9ecff !important;
+  font-size: 1.08rem;
+}
+
+.resource-card p {
+  color: rgba(210, 220, 240, 0.85) !important;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin-bottom: 0.6rem;
+}
+
+.resource-card .tag {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  margin-right: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: #d9ecff;
+  background: rgba(80, 140, 220, 0.22);
+}
+
+.resource-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #8cbaff !important;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.resource-card a:hover {
+  color: #b8d4ff !important;
+}
+
+@media screen and (max-width: 768px) {
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .resource-card {
+  background: rgba(30, 35, 55, 0.55);
+  border-color: rgba(120, 160, 220, 0.18);
+}
+
+[data-theme="dark"] .resource-card h3 {
+  color: #c8dfff !important;
+}
