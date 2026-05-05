@@ -1969,3 +1969,63 @@ a:hover,
     display: none !important;
   }
 }
+
+/* ========================================
+   移动端性能减负
+   ======================================== */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
+
+  #web_bg:after {
+    display: none !important;
+  }
+
+  #nav,
+  #footer,
+  .card-widget,
+  .recent-post-item,
+  .resource-card,
+  .bangumi-card,
+  .quick-card,
+  .plan-card,
+  .about-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .click-effect {
+    display: none !important;
+  }
+
+  #content-inner,
+  #article-container,
+  #recent-posts .recent-post-item {
+    animation: none !important;
+  }
+}
+
+/* ========================================
+   音乐页 APlayer 非 fixed 模式
+   ======================================== */
+#music-container .aplayer {
+  max-width: 100%;
+  margin: 1rem 0;
+  border-radius: 14px;
+  background: var(--fu-card-bg);
+  border: 1px solid var(--fu-card-border);
+  box-shadow: var(--fu-shadow);
+}
+
+#music-container .aplayer .aplayer-title {
+  color: var(--fu-title) !important;
+}
+
+#music-container .aplayer .aplayer-author {
+  color: var(--fu-desc) !important;
+}
+
+[data-theme="dark"] #music-container .aplayer {
+  background: var(--fu-card-bg-strong);
+}
