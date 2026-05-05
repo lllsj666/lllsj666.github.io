@@ -422,26 +422,116 @@ body {
 }
 
 /* ========================================
-   APlayer 音乐栏
+   MUSIC PLAYER - APlayer / MetingJS
+   默认迷你，不自动播放，浅深色适配
    ======================================== */
 
 .aplayer.aplayer-fixed {
-    background: rgba(255, 255, 255, 0.7) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-    border-radius: 8px 8px 0 0 !important;
-    box-shadow: none !important;
+  z-index: 9997 !important;
+  max-width: 360px !important;
+  border-radius: 0 14px 0 0 !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(148, 163, 184, 0.22) !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.10) !important;
 }
 
 .aplayer.aplayer-fixed .aplayer-body { background: transparent !important; }
 .aplayer.aplayer-fixed .aplayer-info { background: transparent !important; border-top: none !important; }
-.aplayer.aplayer-fixed .aplayer-miniswitcher { background: rgba(255, 255, 255, 0.7) !important; border-left: 1px solid rgba(0, 0, 0, 0.06) !important; }
-.aplayer.aplayer-fixed .aplayer-list { background: rgba(255, 255, 255, 0.75) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(0, 0, 0, 0.06) !important; border-bottom: none !important; }
+.aplayer.aplayer-fixed .aplayer-miniswitcher {
+  background: rgba(255, 255, 255, 0.86) !important;
+  border-left: 1px solid rgba(148, 163, 184, 0.18) !important;
+}
+.aplayer.aplayer-fixed .aplayer-list {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(148, 163, 184, 0.22) !important;
+  border-bottom: none !important;
+}
 
-[data-theme="dark"] .aplayer.aplayer-fixed { background: rgba(30, 30, 30, 0.7) !important; border-color: rgba(255,255,255,0.06) !important; }
-[data-theme="dark"] .aplayer.aplayer-fixed .aplayer-miniswitcher { background: rgba(30, 30, 30, 0.7) !important; }
-[data-theme="dark"] .aplayer.aplayer-fixed .aplayer-list { background: rgba(30, 30, 30, 0.75) !important; }
+.aplayer .aplayer-title {
+  color: #1f2937 !important;
+  font-weight: 600 !important;
+}
+.aplayer .aplayer-author,
+.aplayer .aplayer-list-author,
+.aplayer .aplayer-list-index {
+  color: #6b7280 !important;
+}
+.aplayer .aplayer-icon {
+  color: #374151 !important;
+}
+.aplayer .aplayer-icon:hover {
+  color: #2563eb !important;
+}
+.aplayer .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+  background: rgba(148, 163, 184, 0.35) !important;
+}
+.aplayer .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+  background: #60a5fa !important;
+}
+.aplayer .aplayer-bar-wrap .aplayer-bar .aplayer-thumb {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+.aplayer .aplayer-list li {
+  color: #374151 !important;
+  border-top: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+.aplayer .aplayer-list li:hover,
+.aplayer .aplayer-list li.aplayer-list-light {
+  background: rgba(37, 99, 235, 0.08) !important;
+}
+.aplayer .aplayer-list li.aplayer-list-light .aplayer-list-title {
+  color: #2563eb !important;
+}
+
+/* 深色模式 */
+[data-theme="dark"] .aplayer.aplayer-fixed {
+  background: rgba(15, 23, 42, 0.88) !important;
+  border-color: rgba(96, 165, 250, 0.18) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.38) !important;
+}
+[data-theme="dark"] .aplayer.aplayer-fixed .aplayer-miniswitcher {
+  background: rgba(15, 23, 42, 0.94) !important;
+  border-left-color: rgba(96, 165, 250, 0.16) !important;
+}
+[data-theme="dark"] .aplayer.aplayer-fixed .aplayer-list {
+  background: rgba(15, 23, 42, 0.96) !important;
+  border-color: rgba(96, 165, 250, 0.18) !important;
+}
+[data-theme="dark"] .aplayer .aplayer-title { color: #e5e7eb !important; }
+[data-theme="dark"] .aplayer .aplayer-author,
+[data-theme="dark"] .aplayer .aplayer-list-author,
+[data-theme="dark"] .aplayer .aplayer-list-index { color: #94a3b8 !important; }
+[data-theme="dark"] .aplayer .aplayer-icon { color: #cbd5e1 !important; }
+[data-theme="dark"] .aplayer .aplayer-icon:hover { color: #93c5fd !important; }
+[data-theme="dark"] .aplayer .aplayer-list li {
+  color: #cbd5e1 !important;
+  border-top-color: rgba(96, 165, 250, 0.14) !important;
+}
+[data-theme="dark"] .aplayer .aplayer-list li:hover,
+[data-theme="dark"] .aplayer .aplayer-list li.aplayer-list-light {
+  background: rgba(96, 165, 250, 0.12) !important;
+}
+[data-theme="dark"] .aplayer .aplayer-list li.aplayer-list-light .aplayer-list-title {
+  color: #93c5fd !important;
+}
+
+/* 移动端：避免挡正文 */
+@media screen and (max-width: 768px) {
+  .aplayer.aplayer-fixed {
+    max-width: calc(100vw - 16px) !important;
+    left: 8px !important;
+    bottom: 8px !important;
+    border-radius: 14px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-list {
+    max-height: 260px !important;
+  }
+}
 
 /* ========================================
    呼吸感间距
