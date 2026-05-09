@@ -2089,7 +2089,7 @@ a:hover,
 
   .layout > div:first-child:not(.nc) {
     padding: 0 !important;
-    background: transparent !important;
+    background: rgba(255, 255, 255, 0.96) !important;
     box-shadow: none !important;
     border: none !important;
   }
@@ -2408,6 +2408,127 @@ a:hover,
   [data-theme="dark"] #aside-content #card-info-btn {
     color: #94a3b8 !important;
     border-color: rgba(255,255,255,0.12) !important;
+  }
+}
+
+/* ========================================
+   ULTIMATE READABILITY FIX
+   文件最末尾，最高优先级，覆盖一切
+   确保文章正文在任何模式/设备下都清晰
+   ======================================== */
+
+/* --- 浅色模式：强制深色文字 + 不透明背景 --- */
+#article-container,
+#article-container p,
+#article-container li,
+#article-container span,
+#article-container div:not(.tabs):not(.tab-contents):not(.highlight):not(.note) {
+  color: #1f2937 !important;
+}
+
+#article-container h1,
+#article-container h2,
+#article-container h3,
+#article-container h4,
+#article-container h5,
+#article-container h6 {
+  color: #111827 !important;
+}
+
+#article-container strong,
+#article-container b {
+  color: #0f172a !important;
+}
+
+#article-container blockquote,
+#article-container blockquote p {
+  color: #374151 !important;
+}
+
+#post,
+#article-container {
+  background: rgba(255, 255, 255, 0.96) !important;
+}
+
+/* --- 深色模式：强制浅色文字 + 深色背景 --- */
+[data-theme="dark"] #article-container,
+[data-theme="dark"] #article-container p,
+[data-theme="dark"] #article-container li,
+[data-theme="dark"] #article-container span,
+[data-theme="dark"] #article-container div:not(.tabs):not(.tab-contents):not(.highlight):not(.note) {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] #article-container h1,
+[data-theme="dark"] #article-container h2,
+[data-theme="dark"] #article-container h3,
+[data-theme="dark"] #article-container h4,
+[data-theme="dark"] #article-container h5,
+[data-theme="dark"] #article-container h6 {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] #article-container strong,
+[data-theme="dark"] #article-container b {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] #article-container blockquote,
+[data-theme="dark"] #article-container blockquote p {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] #post,
+[data-theme="dark"] #article-container {
+  background: rgba(15, 23, 42, 0.96) !important;
+}
+
+/* --- 移动端：双重保险 --- */
+@media screen and (max-width: 900px) {
+  #article-container,
+  #article-container p,
+  #article-container li,
+  #article-container span,
+  #article-container div {
+    color: #1f2937 !important;
+  }
+
+  #article-container h1,
+  #article-container h2,
+  #article-container h3,
+  #article-container h4,
+  #article-container h5,
+  #article-container h6 {
+    color: #111827 !important;
+  }
+
+  #article-container strong,
+  #article-container b {
+    color: #0f172a !important;
+  }
+
+  #post,
+  #article-container {
+    background: #ffffff !important;
+  }
+
+  [data-theme="dark"] #article-container,
+  [data-theme="dark"] #article-container p,
+  [data-theme="dark"] #article-container li,
+  [data-theme="dark"] #article-container span,
+  [data-theme="dark"] #article-container div {
+    color: #e2e8f0 !important;
+  }
+
+  [data-theme="dark"] #article-container h1,
+  [data-theme="dark"] #article-container h2,
+  [data-theme="dark"] #article-container h3 {
+    color: #f1f5f9 !important;
+  }
+
+  [data-theme="dark"] #post,
+  [data-theme="dark"] #article-container {
+    background: #0f172a !important;
   }
 }
 
