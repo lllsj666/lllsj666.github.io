@@ -31,7 +31,7 @@
   left: 0;
   width: 100%;
   min-height: 30vh;
-  background: linear-gradient(60deg, rgba(184, 166, 217, 0.25), rgba(200, 180, 220, 0.15), rgba(220, 200, 210, 0.25));
+  background: transparent;
   z-index: 0;
   pointer-events: none;
 }
@@ -652,8 +652,7 @@ a:hover,
 
 #page-header::before,
 #page-header.full_page::before {
-  background: rgba(255, 255, 255, 0.16) !important;
-  opacity: 1 !important;
+  background: transparent !important;
 }
 
 /* 首页标题：干净一点 */
@@ -819,7 +818,7 @@ a:hover,
 }
 
 #page-header::before {
-  background: rgba(0, 0, 0, 0.28) !important;
+  background: transparent !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -2599,14 +2598,13 @@ a:hover,
   color: #f1f5f9 !important;
 }
 
-/* --- 头图遮罩增强（让白色标题更清晰）--- */
+/* --- 头图遮罩：完全透明，不遮挡背景图 --- */
 #page-header.post-bg::before {
-  background: rgba(0, 0, 0, 0.45) !important;
-  opacity: 1 !important;
+  background: transparent !important;
 }
 
 [data-theme="dark"] #page-header.post-bg::before {
-  background: rgba(0, 0, 0, 0.6) !important;
+  background: transparent !important;
 }
 
 /* --- 移动端标题适配 --- */
@@ -2619,7 +2617,7 @@ a:hover,
   }
 
   #page-header.post-bg::before {
-    background: rgba(0, 0, 0, 0.55) !important;
+    background: transparent !important;
   }
 
   #recent-posts .recent-post-item > .recent-post-info > .article-title {
