@@ -1892,9 +1892,73 @@ a:hover,
   #recent-posts .recent-post-item {
     animation: none !important;
   }
+}
 
-  #card-toc {
+/* ========================================
+   移动端目录隐藏（匹配 Butterfly 900px 断点）
+   ======================================== */
+@media screen and (max-width: 900px) {
+  #aside-content #card-toc,
+  #rightside #mobile-toc-button {
     display: none !important;
+  }
+}
+
+/* ========================================
+   移动端首页排版优化
+   ======================================== */
+@media screen and (max-width: 900px) {
+  .recent-post-item {
+    border-radius: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  #recent-posts .recent-post-item .post_cover {
+    height: 190px !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+
+  #recent-posts .recent-post-item > .recent-post-info {
+    padding: 16px 18px 22px !important;
+  }
+
+  #recent-posts .recent-post-item > .recent-post-info > .article-title {
+    font-size: 1.1rem !important;
+    -webkit-line-clamp: 2 !important;
+  }
+
+  #recent-posts .recent-post-item > .recent-post-info > .content {
+    font-size: 0.88rem !important;
+    -webkit-line-clamp: 3 !important;
+  }
+
+  #aside-content .avatar-img img {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+  }
+
+  #aside-content .card-widget {
+    padding: 16px 18px !important;
+    margin-bottom: 14px !important;
+  }
+
+  #aside-content .author-info-name {
+    font-size: 1.15rem !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #recent-posts .recent-post-item .post_cover {
+    height: 170px !important;
+  }
+
+  #recent-posts .recent-post-item > .recent-post-info {
+    padding: 14px 14px 18px !important;
+  }
+
+  #recent-posts .recent-post-item > .recent-post-info > .article-title {
+    font-size: 1rem !important;
   }
 }
 
