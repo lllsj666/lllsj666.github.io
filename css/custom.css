@@ -2532,3 +2532,102 @@ a:hover,
   }
 }
 
+/* ========================================
+   ALL HEADINGS READABILITY FIX
+   覆盖所有页面标题：文章标题、首页卡片标题、侧边栏标题等
+   确保深浅色模式下全部清晰
+   ======================================== */
+
+/* --- 文章页大标题（位于头图上方）--- */
+#post-info .post-title,
+#page-header #post-info .post-title {
+  color: #ffffff !important;
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.85),
+    0 1px 4px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(0, 0, 0, 0.6) !important;
+  font-weight: 700 !important;
+}
+
+/* --- 文章页标题（无头图时）--- */
+#post > #post-info .post-title {
+  color: #1f2937 !important;
+  text-shadow: none !important;
+}
+
+[data-theme="dark"] #post > #post-info .post-title {
+  color: #f1f5f9 !important;
+}
+
+/* --- 页面标题（分类/标签/归档等）--- */
+.page-title,
+#page .page-title {
+  color: #1f2937 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page-title,
+[data-theme="dark"] #page .page-title {
+  color: #f1f5f9 !important;
+}
+
+/* --- 首页文章卡片标题 --- */
+#recent-posts .recent-post-item > .recent-post-info > .article-title,
+#recent-posts .recent-post-item .article-title,
+.recent-post-info .article-title {
+  color: #1f2937 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] #recent-posts .recent-post-item > .recent-post-info > .article-title,
+[data-theme="dark"] #recent-posts .recent-post-item .article-title,
+[data-theme="dark"] .recent-post-info .article-title {
+  color: #f1f5f9 !important;
+}
+
+/* --- 侧边栏卡片标题 --- */
+.card-widget .item-headline,
+#aside-content .item-headline,
+#aside-content .card-widget .item-headline {
+  color: #1f2937 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .card-widget .item-headline,
+[data-theme="dark"] #aside-content .item-headline,
+[data-theme="dark"] #aside-content .card-widget .item-headline {
+  color: #f1f5f9 !important;
+}
+
+/* --- 头图遮罩增强（让白色标题更清晰）--- */
+#page-header.post-bg::before {
+  background: rgba(0, 0, 0, 0.45) !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] #page-header.post-bg::before {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* --- 移动端标题适配 --- */
+@media screen and (max-width: 900px) {
+  #post-info .post-title {
+    font-size: 1.6em !important;
+    text-shadow:
+      0 2px 10px rgba(0, 0, 0, 0.9),
+      0 1px 3px rgba(0, 0, 0, 0.95) !important;
+  }
+
+  #page-header.post-bg::before {
+    background: rgba(0, 0, 0, 0.55) !important;
+  }
+
+  #recent-posts .recent-post-item > .recent-post-info > .article-title {
+    color: #1f2937 !important;
+  }
+
+  [data-theme="dark"] #recent-posts .recent-post-item > .recent-post-info > .article-title {
+    color: #f1f5f9 !important;
+  }
+}
+
