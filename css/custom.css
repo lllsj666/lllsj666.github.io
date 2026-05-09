@@ -111,9 +111,9 @@ a, a:hover, .post-title-link, .menu-item-active a {
 
   /* 新变量体系 - 深色模式 */
   --fu-title: #e5e7eb;
-  --fu-text: #cbd5e1;
-  --fu-desc: #94a3b8;
-  --fu-muted: #64748b;
+  --fu-text: #d1d5db;
+  --fu-desc: #9ca3af;
+  --fu-muted: #6b7280;
   --fu-bg: #020617;
   --fu-card-bg: rgba(15, 23, 42, 0.82);
   --fu-card-bg-strong: rgba(15, 23, 42, 0.92);
@@ -1570,6 +1570,179 @@ a:hover,
 [data-theme="dark"] .avatar-img img,
 [data-theme="dark"] .card-info-avatar img {
   filter: none !important;
+}
+
+/* ========================================
+   浅色模式文章可读性修复
+   显式设置所有文本元素颜色，避免移动端透明背景导致文字消失
+   ======================================== */
+
+#article-container,
+.post-content,
+.post-body {
+  color: #374151 !important;
+}
+
+#article-container p,
+#article-container li,
+#article-container span,
+#article-container div,
+.post-content p,
+.post-content li,
+.post-body p,
+.post-body li {
+  color: #374151 !important;
+}
+
+#article-container h1,
+#article-container h2,
+#article-container h3,
+#article-container h4,
+#article-container h5,
+#article-container h6 {
+  color: #1f2937 !important;
+}
+
+#article-container strong,
+#article-container b,
+.post-content strong,
+.post-content b {
+  color: #111827 !important;
+}
+
+#article-container blockquote p,
+#article-container blockquote {
+  color: #4b5563 !important;
+}
+
+#article-container code {
+  color: #1e40af !important;
+  background: rgba(59, 130, 246, 0.08) !important;
+}
+
+#article-container pre code {
+  color: #374151 !important;
+}
+
+#article-container table td,
+#article-container table th {
+  color: #374151 !important;
+}
+
+#article-container hr {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 移动端浅色模式 - 文章容器强制不透明背景 + 高对比度文字 */
+@media screen and (max-width: 900px) {
+  #article-container,
+  #post,
+  .post-content,
+  .post-body {
+    background: rgba(255, 255, 255, 0.94) !important;
+    color: #374151 !important;
+  }
+
+  #article-container p,
+  #article-container li,
+  #article-container span,
+  #article-container div,
+  #post p,
+  #post li,
+  .post-content p,
+  .post-content li {
+    color: #374151 !important;
+  }
+
+  #article-container h1,
+  #article-container h2,
+  #article-container h3,
+  #article-container h4,
+  #article-container h5,
+  #article-container h6,
+  #post h1,
+  #post h2,
+  #post h3 {
+    color: #1f2937 !important;
+  }
+
+  #article-container strong,
+  #article-container b,
+  #post strong,
+  #post b {
+    color: #111827 !important;
+  }
+}
+
+/* ========================================
+   深色模式文章可读性修复
+   提升正文对比度，确保字体清晰可见
+   ======================================== */
+
+[data-theme="dark"] #article-container,
+[data-theme="dark"] .post-content,
+[data-theme="dark"] .post-body {
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] #article-container p,
+[data-theme="dark"] #article-container li,
+[data-theme="dark"] #article-container span,
+[data-theme="dark"] #article-container div,
+[data-theme="dark"] .post-content p,
+[data-theme="dark"] .post-content li,
+[data-theme="dark"] .post-body p,
+[data-theme="dark"] .post-body li {
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] #article-container h1,
+[data-theme="dark"] #article-container h2,
+[data-theme="dark"] #article-container h3,
+[data-theme="dark"] #article-container h4,
+[data-theme="dark"] #article-container h5,
+[data-theme="dark"] #article-container h6 {
+  color: #e5e7eb !important;
+}
+
+[data-theme="dark"] #article-container strong,
+[data-theme="dark"] #article-container b,
+[data-theme="dark"] .post-content strong,
+[data-theme="dark"] .post-content b {
+  color: #f3f4f6 !important;
+}
+
+[data-theme="dark"] #article-container blockquote p,
+[data-theme="dark"] #article-container blockquote {
+  color: #b0b8c4 !important;
+}
+
+[data-theme="dark"] #article-container code {
+  color: #bfdbfe !important;
+  background: rgba(37, 99, 235, 0.18) !important;
+}
+
+[data-theme="dark"] #article-container pre code {
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] #article-container table td,
+[data-theme="dark"] #article-container table th {
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] #article-container hr {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* 移动端深色模式 - 文章容器强制深色背景 */
+@media screen and (max-width: 900px) {
+  [data-theme="dark"] #article-container,
+  [data-theme="dark"] #post,
+  [data-theme="dark"] .post-content,
+  [data-theme="dark"] .post-body {
+    background: rgba(15, 23, 42, 0.94) !important;
+  }
 }
 
 /* ========================================
