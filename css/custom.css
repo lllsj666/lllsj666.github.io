@@ -1892,5 +1892,9 @@ a:hover,
   #recent-posts .recent-post-item {
     animation: none !important;
   }
+
+  #card-toc {
+    display: none !important;
+  }
 }
 
