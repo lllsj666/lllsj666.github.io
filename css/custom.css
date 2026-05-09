@@ -2541,10 +2541,7 @@ a:hover,
 #post-info .post-title,
 #page-header #post-info .post-title {
   color: #ffffff !important;
-  text-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.85),
-    0 1px 4px rgba(0, 0, 0, 0.9),
-    0 0 40px rgba(0, 0, 0, 0.6) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55) !important;
   font-weight: 700 !important;
 }
 
@@ -2598,26 +2595,41 @@ a:hover,
   color: #f1f5f9 !important;
 }
 
-/* --- 头图遮罩：完全透明，不遮挡背景图 --- */
-#page-header.post-bg::before {
+/* --- 彻底清除所有遮罩层 --- */
+#page-header::before,
+#page-header.full_page::before,
+#page-header.post-bg::before,
+#page-header:not(.not-top-img)::before {
+  display: none !important;
   background: transparent !important;
+  opacity: 0 !important;
 }
 
-[data-theme="dark"] #page-header.post-bg::before {
+#web_bg::before {
+  display: none !important;
   background: transparent !important;
+  opacity: 0 !important;
+}
+
+[data-theme="dark"] #page-header::before,
+[data-theme="dark"] #page-header.post-bg::before,
+[data-theme="dark"] #page-header.full_page::before,
+[data-theme="dark"] #page-header:not(.not-top-img)::before,
+[data-theme="dark"] #web_bg::before {
+  display: none !important;
+  background: transparent !important;
+  opacity: 0 !important;
 }
 
 /* --- 移动端标题适配 --- */
 @media screen and (max-width: 900px) {
   #post-info .post-title {
     font-size: 1.6em !important;
-    text-shadow:
-      0 2px 10px rgba(0, 0, 0, 0.9),
-      0 1px 3px rgba(0, 0, 0, 0.95) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
   }
 
   #page-header.post-bg::before {
-    background: transparent !important;
+    display: none !important;
   }
 
   #recent-posts .recent-post-item > .recent-post-info > .article-title {
