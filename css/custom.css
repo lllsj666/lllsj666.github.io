@@ -2723,3 +2723,65 @@ a:hover,
   }
 }
 
+/* ========================================
+   MOBILE SIDEBAR MENU FIX
+   头像完整展示 + 子菜单默认折叠
+   ======================================== */
+
+/* 移动端菜单栏头像强制完整展示 */
+#sidebar #sidebar-menus .avatar-img {
+  display: block !important;
+  width: 100px !important;
+  height: 100px !important;
+  margin: 25px auto 15px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+
+#sidebar #sidebar-menus .avatar-img img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+
+/* 子菜单默认折叠（配合 JS 注入 .hide 类） */
+#sidebar #sidebar-menus .menus_items .menus_item_child {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  transition: max-height 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* JS 移除 .hide 后展开 */
+#sidebar #sidebar-menus .site-page.group:not(.hide) + .menus_item_child {
+  max-height: 800px !important;
+  opacity: 1 !important;
+}
+
+/* 分组标题可点击提示 */
+#sidebar #sidebar-menus .menus_items .site-page.group {
+  cursor: pointer !important;
+  user-select: none !important;
+}
+
+/* 箭头旋转动画 */
+#sidebar #sidebar-menus .menus_items .site-page.group > i:last-child {
+  transition: transform 0.3s ease !important;
+}
+
+#sidebar #sidebar-menus .menus_items .site-page.group:not(.hide) > i:last-child {
+  transform: rotate(180deg) !important;
+}
+
+/* 深色模式菜单背景 */
+[data-theme="dark"] #sidebar #sidebar-menus {
+  background: rgba(15, 23, 42, 0.98) !important;
+}
+
+[data-theme="dark"] #sidebar #sidebar-menus .avatar-img {
+  border: 2px solid rgba(255, 255, 255, 0.15) !important;
+}
+
