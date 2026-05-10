@@ -2679,22 +2679,38 @@ a:hover,
   transform: translate(-50%, -50%) !important;
 }
 
-/* 移动端：屏幕窄小，隐藏文章标题，只保留返回首页 */
+/* 移动端：屏幕窄小，导航栏只保留返回首页按钮 */
 @media screen and (max-width: 900px) {
+  /* 彻底隐藏文章标题 */
   #nav .nav-page-title > :first-child {
     display: none !important;
   }
 
+  /* 返回首页字号适配 */
   #nav .nav-page-title > :last-child {
     font-size: 0.85em !important;
   }
 
-  /* blog-info 收缩适应内容，为右侧菜单留空间 */
+  /* nav-fixed 状态下强制只显示返回首页，隐藏博客名 */
+  #page-header.nav-fixed #nav #blog-info > a:first-child {
+    display: none !important;
+  }
+
+  #page-header.nav-fixed #nav #blog-info > a:last-child {
+    display: block !important;
+  }
+
+  /* blog-info 不抢占多余空间 */
   #nav #blog-info {
     flex: 0 1 auto !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
+  }
+
+  /* 搜索按钮在移动端完全隐藏，释放空间 */
+  #nav #search-button {
+    display: none !important;
   }
 }
 
