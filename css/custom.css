@@ -2679,11 +2679,22 @@ a:hover,
   transform: translate(-50%, -50%) !important;
 }
 
-/* 移动端：标题过长，缩小字号，增大宽度限制 */
+/* 移动端：屏幕窄小，隐藏文章标题，只保留返回首页 */
 @media screen and (max-width: 900px) {
   #nav .nav-page-title > :first-child {
-    max-width: 50vw !important;
+    display: none !important;
+  }
+
+  #nav .nav-page-title > :last-child {
     font-size: 0.85em !important;
+  }
+
+  /* blog-info 收缩适应内容，为右侧菜单留空间 */
+  #nav #blog-info {
+    flex: 0 1 auto !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
   }
 }
 
