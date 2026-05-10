@@ -2708,9 +2708,17 @@ a:hover,
     white-space: nowrap !important;
   }
 
-  /* 搜索按钮在移动端完全隐藏，释放空间 */
+  /* 搜索按钮靠右显示，位于菜单按钮左侧 */
   #nav #search-button {
-    display: none !important;
+    display: inline !important;
+    padding: 0 8px !important;
+  }
+
+  /* menus 容器右对齐 */
+  #nav #menus {
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
   }
 }
 
