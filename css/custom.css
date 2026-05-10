@@ -2641,3 +2641,49 @@ a:hover,
   }
 }
 
+/* ========================================
+   NAV PAGE TITLE FIX
+   "返回首页" 始终在左侧，文章标题居中显示
+   ======================================== */
+
+/* 父容器回归 static，使子元素可相对 #nav 定位
+   不强制 display，由主题 JS 控制显示/隐藏 */
+#nav .nav-page-title {
+  position: static !important;
+}
+
+/* "返回首页" — 正常文档流，左侧显示 */
+#nav .nav-page-title > :last-child {
+  position: static !important;
+  opacity: 1 !important;
+  transform: none !important;
+  white-space: nowrap !important;
+}
+
+/* 文章标题 — 相对导航栏绝对居中 */
+#nav .nav-page-title > :first-child {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  max-width: 36vw !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+}
+
+/* 取消 hover 动画，保持居中不动 */
+#nav .nav-page-title:hover > :first-child {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* 移动端：标题过长，缩小字号，增大宽度限制 */
+@media screen and (max-width: 900px) {
+  #nav .nav-page-title > :first-child {
+    max-width: 50vw !important;
+    font-size: 0.85em !important;
+  }
+}
+
