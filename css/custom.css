@@ -2728,15 +2728,17 @@ a:hover,
    头像完整展示 + 子菜单默认折叠
    ======================================== */
 
-/* 移动端菜单栏头像强制完整展示 */
+/* 移动端菜单栏头像强制完整展示（避开顶部导航栏） */
 #sidebar #sidebar-menus .avatar-img {
   display: block !important;
   width: 100px !important;
   height: 100px !important;
-  margin: 25px auto 15px !important;
+  margin: 80px auto 20px !important;
   border-radius: 50% !important;
   overflow: hidden !important;
   flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 104 !important;
 }
 
 #sidebar #sidebar-menus .avatar-img img {
