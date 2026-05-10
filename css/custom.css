@@ -2700,25 +2700,26 @@ a:hover,
     display: block !important;
   }
 
-  /* blog-info 不抢占多余空间 */
+  /* blog-info 保持 flex:1 撑开左侧，文字溢出截断 */
   #nav #blog-info {
-    flex: 0 1 auto !important;
+    flex: 1 !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
   }
 
-  /* 搜索按钮靠右显示，位于菜单按钮左侧 */
+  /* menus 用 margin-left: auto 强制推到最右侧 */
+  #nav #menus {
+    margin-left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 搜索按钮可见，在菜单按钮左侧 */
   #nav #search-button {
     display: inline !important;
     padding: 0 8px !important;
-  }
-
-  /* menus 容器右对齐 */
-  #nav #menus {
-    display: flex !important;
-    align-items: center !important;
-    flex: 0 0 auto !important;
   }
 }
 
