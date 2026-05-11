@@ -5022,6 +5022,17 @@ figure.highlight pre .javascript .function {
   gap: 8px;
   vertical-align: middle;
 }
+@media screen and (max-width: 768px) {
+  #post .tag_share .post-meta__tag-list {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
 #post .tag_share .post-meta__tags {
   display: inline-block;
   margin: 0;
@@ -5054,6 +5065,15 @@ figure.highlight pre .javascript .function {
   float: right;
   margin: 8px 0 0;
   width: fit-content;
+}
+@media screen and (max-width: 768px) {
+  #post .tag_share .post-share {
+    display: block;
+    float: none;
+    margin: 12px auto 0;
+    width: 100%;
+    text-align: center;
+  }
 }
 #post .tag_share .post-share .social-share {
   font-size: 0.85em;
