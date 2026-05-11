@@ -2787,3 +2787,75 @@ a:hover,
   border: 2px solid rgba(255, 255, 255, 0.15) !important;
 }
 
+/* ========================================
+   TAG CLOUD OPTIMIZATION
+   统一标签页 & 侧边栏标签颜色，PC/移动端同步
+   ======================================== */
+
+/* --- 主标签云：白字 + 统一柔和底色 --- */
+.tag-cloud-list a {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 8px !important;
+  transition: all 0.25s ease !important;
+}
+
+.tag-cloud-list a:hover {
+  color: #ffffff !important;
+  background: #6366f1 !important;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35) !important;
+  transform: translateY(-2px) scale(1.04) !important;
+}
+
+/* --- 侧边栏标签云 --- */
+.card-tag-cloud a {
+  display: inline-block !important;
+  margin: 3px 4px !important;
+  padding: 3px 10px !important;
+  border: 1px solid rgba(99, 102, 241, 0.25) !important;
+  border-radius: 6px !important;
+  color: #4f46e5 !important;
+  font-size: 0.88em !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.card-tag-cloud a:hover {
+  background: #6366f1 !important;
+  color: #ffffff !important;
+  border-color: #6366f1 !important;
+}
+
+/* --- 深色模式 --- */
+[data-theme="dark"] .tag-cloud-list a {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .card-tag-cloud a {
+  color: #a5b4fc !important;
+  border-color: rgba(165, 180, 252, 0.3) !important;
+}
+
+[data-theme="dark"] .card-tag-cloud a:hover {
+  background: #818cf8 !important;
+  color: #ffffff !important;
+  border-color: #818cf8 !important;
+}
+
+/* --- 移动端适配 --- */
+@media screen and (max-width: 900px) {
+  .tag-cloud-list a {
+    padding: 6px 14px !important;
+    margin: 4px !important;
+    font-size: 0.95em !important;
+  }
+
+  .card-tag-cloud a {
+    padding: 4px 10px !important;
+    margin: 3px !important;
+    font-size: 0.85em !important;
+  }
+}
+

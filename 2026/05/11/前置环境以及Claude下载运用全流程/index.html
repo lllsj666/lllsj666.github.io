@@ -1,0 +1,407 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Claude Code 安装与前置环境配置全流程教程 | 覆的博客</title><meta name="author" content="覆"><meta name="copyright" content="覆"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="从零开始搭建 Claude Code AI 编码环境，涵盖 Git、Node.js、VS Code 安装，以及 Claude Code + CC Switch 中转配置的完整流程，适合纯小白跟着一步步操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code 安装与前置环境配置全流程教程">
+<meta property="og:url" content="https://lllsj666.github.io/2026/05/11/%E5%89%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8AClaude%E4%B8%8B%E8%BD%BD%E8%BF%90%E7%94%A8%E5%85%A8%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="覆的博客">
+<meta property="og:description" content="从零开始搭建 Claude Code AI 编码环境，涵盖 Git、Node.js、VS Code 安装，以及 Claude Code + CC Switch 中转配置的完整流程，适合纯小白跟着一步步操作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lllsj666.github.io/img/%E6%96%87%E7%AB%A0/FG3.png">
+<meta property="article:published_time" content="2026-05-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-10T16:00:00.000Z">
+<meta property="article:author" content="覆">
+<meta property="article:tag" content="AI 编码">
+<meta property="article:tag" content="Claude Code">
+<meta property="article:tag" content="DeepSeek">
+<meta property="article:tag" content="VS Code">
+<meta property="article:tag" content="开发环境">
+<meta property="article:tag" content="新手教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lllsj666.github.io/img/%E6%96%87%E7%AB%A0/FG3.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Claude Code 安装与前置环境配置全流程教程",
+  "url": "https://lllsj666.github.io/2026/05/11/%E5%89%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8AClaude%E4%B8%8B%E8%BD%BD%E8%BF%90%E7%94%A8%E5%85%A8%E6%B5%81%E7%A8%8B/",
+  "image": "https://lllsj666.github.io/img/%E6%96%87%E7%AB%A0/FG3.png",
+  "datePublished": "2026-05-10T16:00:00.000Z",
+  "dateModified": "2026-05-10T16:00:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "覆",
+      "url": "https://lllsj666.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lllsj666.github.io/2026/05/11/%E5%89%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8AClaude%E4%B8%8B%E8%BD%BD%E8%BF%90%E7%94%A8%E5%85%A8%E6%B5%81%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Claude Code 安装与前置环境配置全流程教程',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/wallpaper.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E7%BB%99%E6%88%91%E6%93%A6%E7%9A%AE%E9%9E%8B.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><span class="site-page group"><span> 资源汇总</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/anime/#anime-resource"><i class="fa-fw fas fa-tv"></i><span> 动漫资源</span></a></li><li><a class="site-page child" href="/anime/#manga-resource"><i class="fa-fw fas fa-book"></i><span> 漫画资源</span></a></li><li><a class="site-page child" href="/anime/#tool-resource"><i class="fa-fw fas fa-tools"></i><span> 硬核工具</span></a></li><li><a class="site-page child" href="/anime/#my-bangumi"><i class="fa-fw fas fa-star"></i><span> 我的追番</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://mbti-flame-ten.vercel.app/"><i class="fa-fw fas fa-flask"></i><span> MBTI</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><span> 站点</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><span> 关于</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/message/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/site-log/"><i class="fa-fw fas fa-clock"></i><span> 站点记录</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/%E6%96%87%E7%AB%A0/FG3.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">覆的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Claude Code 安装与前置环境配置全流程教程</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><span class="site-page group"><span> 资源汇总</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/anime/#anime-resource"><i class="fa-fw fas fa-tv"></i><span> 动漫资源</span></a></li><li><a class="site-page child" href="/anime/#manga-resource"><i class="fa-fw fas fa-book"></i><span> 漫画资源</span></a></li><li><a class="site-page child" href="/anime/#tool-resource"><i class="fa-fw fas fa-tools"></i><span> 硬核工具</span></a></li><li><a class="site-page child" href="/anime/#my-bangumi"><i class="fa-fw fas fa-star"></i><span> 我的追番</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://mbti-flame-ten.vercel.app/"><i class="fa-fw fas fa-flask"></i><span> MBTI</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><span> 站点</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><span> 关于</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/message/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/site-log/"><i class="fa-fw fas fa-clock"></i><span> 站点记录</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Claude Code 安装与前置环境配置全流程教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-10T16:00:00.000Z" title="发表于 2026-05-11 00:00:00">2026-05-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-10T16:00:00.000Z" title="更新于 2026-05-11 00:00:00">2026-05-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先申明 使用Claude的外接大模型包括官方大模型，只要使用并消耗了token就必定会有花销。</p>
+<p>现在越来越多开发者开始使用 AI 编码工具来提升开发效率，<strong>Claude Code</strong> 就是其中佼佼者。它可以帮助我们理解项目、修改代码、生成文件，甚至配合 VS Code 直接完成一部分开发工作。</p>
+<p>这篇文章主要面向新手，带你一步步完成 Claude Code 的使用环境搭建。只要跟着步骤走，基本都能将 Claude Code 成功部署到本地。</p>
+<p>整体流程分为以下五步：</p>
+<ol>
+<li>安装基础开发环境：Git、Node.js &#x2F; Next.js</li>
+<li>安装代码编辑器：VS Code</li>
+<li>安装 AI 编码工具：Claude Code</li>
+<li>配置 API 中转工具：CC Switch</li>
+<li>安装 VS Code 插件：Claude Code for VS Code、Tailwind CSS</li>
+</ol>
+<blockquote>
+<p><strong>说明：</strong> 文中括号里的内容是后续可以插入的视频教程链接位置，你可以在对应步骤中找到配套的图文或视频教程。</p>
+</blockquote>
+<hr>
+<h2 id="一、安装基础环境依赖：Git、Node-js-Next-js"><a href="#一、安装基础环境依赖：Git、Node-js-Next-js" class="headerlink" title="一、安装基础环境依赖：Git、Node.js &#x2F; Next.js"></a>一、安装基础环境依赖：Git、Node.js &#x2F; Next.js</h2><p>在正式安装 Claude Code 之前，我们需要先准备好一些基础开发环境。</p>
+<p>这一步可以理解为”给电脑装上写代码所需的基础工具”。如果没有这些工具，后面很多命令可能无法正常运行。</p>
+<h3 id="1-安装-Git"><a href="#1-安装-Git" class="headerlink" title="1. 安装 Git"></a>1. 安装 Git</h3><p><strong>Git</strong> 是一个分布式版本管理工具。简单来说，它可以帮助我们管理代码版本，也可以从 GitHub 等平台直接克隆项目代码。</p>
+<p>很多开发工具默认依赖 Git，所以这是必须安装的基础环境之一。</p>
+<ul>
+<li><strong>Git 下载地址：</strong> <a target="_blank" rel="noopener" href="https://git-scm.com/install/">官网链接</a></li>
+<li><strong>视频教程：</strong> <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15SwJzBEa6/?share_source=copy_web&vd_source=8ca03fb6c926e">Bilibili 教程（建议使用网页版打开）—— Git 安装教程</a></li>
+</ul>
+<p>安装完成后，按 <code>Win + R</code> 输入 <code>cmd</code> 打开终端或命令行工具，输入以下命令检查是否安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<p>如果看到类似下面的输出，说明 Git 安装成功了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git version 2.x.x</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-安装-Node-js"><a href="#2-安装-Node-js" class="headerlink" title="2. 安装 Node.js"></a>2. 安装 Node.js</h3><p>这一步建议重点安装的是 <strong>Node.js</strong>。</p>
+<p>很多新手容易把 Node.js 和 Next.js 混淆，简单区分如下：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Node.js</strong></td>
+<td>JavaScript 运行环境，支持高并发场景，很多前端工具依赖它</td>
+</tr>
+<tr>
+<td><strong>Next.js</strong></td>
+<td>基于 React 的前端开发框架，用于开发网站或 Web 应用</td>
+</tr>
+</tbody></table>
+<p>Claude Code、npm 以及很多前端项目都需要 Node.js 环境，所以在安装 Claude Code 之前，建议先安装 Node.js。</p>
+<p>纯小白照着视频一步步操作基本都能正常安装，<strong>建议不要将软件装在 C 盘（系统盘）</strong>。</p>
+<ul>
+<li><strong>Node.js 官网链接：</strong> <a target="_blank" rel="noopener" href="https://nodejs.cn/">官网链接</a></li>
+<li><strong>视频教程：</strong> <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1sbjgzwEBX/?share_source=copy_web&vd_source=8ca03fb6c926efb27cc20b2fdd2ff395">Bilibili 教程（建议使用网页版打开）—— Node.js 安装零基础教程 2025</a></li>
+</ul>
+<p>安装完成后，在命令行中依次输入以下两条命令验证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p>如果能看到版本号，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v20.x.x</span><br></pre></td></tr></table></figure>
+
+<p>说明 Node.js 安装成功。</p>
+<p>再输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>如果也能看到版本号，说明 <strong>npm</strong>（Node.js 自带的包管理工具）也已就绪。后面安装 Claude Code 时会用到它。</p>
+<hr>
+<h2 id="二、安装-VS-Code：常用代码编辑器"><a href="#二、安装-VS-Code：常用代码编辑器" class="headerlink" title="二、安装 VS Code：常用代码编辑器"></a>二、安装 VS Code：常用代码编辑器</h2><p>第二步，我们需要安装一个写代码的软件，这里推荐使用 <strong>Visual Studio Code</strong>，简称 <strong>VS Code</strong>。</p>
+<p>VS Code 是目前非常流行的代码编辑器，具有以下优点：</p>
+<ul>
+<li><p>完全免费</p>
+</li>
+<li><p>插件生态丰富</p>
+</li>
+<li><p>对新手友好</p>
+</li>
+<li><p>支持前端、后端、Python、Markdown 等多种开发场景</p>
+</li>
+<li><p>能够很好地配合 Claude Code 使用</p>
+</li>
+<li><p><strong>VS Code 下载地址：</strong> <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">直达官网链接</a></p>
+</li>
+<li><p><strong>视频教程：</strong> <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tyAtetEd1/?share_source=copy_web&vd_source=8ca03fb6c926efb27cc20b2fdd2ff395">Bilibili 教程 —— VS Code 使用教程【2025 最新】安装、配置、设置中文</a></p>
+</li>
+</ul>
+<p>安装完成后打开 VS Code，可以先熟悉几个常用区域：</p>
+<ul>
+<li><strong>左侧资源管理器</strong>：查看项目文件</li>
+<li><strong>中间编辑区</strong>：编写代码的主要区域</li>
+<li><strong>底部终端</strong>：输入命令的地方</li>
+<li><strong>左侧插件栏</strong>：安装扩展插件</li>
+</ul>
+<p>后面我们会经常用到 VS Code 的终端功能。</p>
+<p>打开终端的方法：</p>
+<ul>
+<li>英文界面：<code>顶部菜单栏 → Terminal → New Terminal</code></li>
+<li>中文界面：<code>终端 → 新建终端</code></li>
+</ul>
+<hr>
+<h2 id="三、安装-Claude-Code-与-CC-Switch"><a href="#三、安装-Claude-Code-与-CC-Switch" class="headerlink" title="三、安装 Claude Code 与 CC Switch"></a>三、安装 Claude Code 与 CC Switch</h2><p>第三步就是安装本文最核心的工具：<strong>Claude Code</strong>。</p>
+<p>Claude Code 可以理解为一个运行在命令行里的 AI 编码助手。它可以读取你的项目文件，根据你的需求修改代码、解释代码、生成新功能。</p>
+<blockquote>
+<p><strong>前置检查：</strong> 在安装 Claude Code 之前，请确保你已经完成前面的环境准备：</p>
+<ul>
+<li>✅ 已安装 Git</li>
+<li>✅ 已安装 Node.js</li>
+<li>✅ 已安装 npm</li>
+<li>✅ 已安装 VS Code</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>全文字教程：</strong> <a target="_blank" rel="noopener" href="https://daheiai.com/cc-install.html">Claude Code 安装教程</a></li>
+<li><strong>视频教程：</strong> <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KjoxBoEQJ/?share_source=copy_web&vd_source=8ca03fb6c926efb27cc20b2fdd2ff395">Bilibili 教程 —— 9 分钟搞定！Claude Code 与 CC Switch 保姆级安装 + 原理 + 真实用法（国内直连）</a></li>
+</ul>
+<blockquote>
+<p><strong>💡 备选方案：</strong> 如果跟着视频安装时命令行始终无法成功下载，可以试试以下方法。我已经将 <code>claude.exe</code> 本体安装包打包好了：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://wwbwq.lanzouv.com/ioL3Q3p8p87c">claude.exe 下载</a></li>
+</ul>
+<p>下载后将本体放在固态硬盘中，双击 <code>Claude.exe</code>，然后再参照视频完成安装后的配置操作即可。</p>
+</blockquote>
+<p>视频后半部分还包含了 <strong>CC Switch</strong> 的下载和配置方案，建议一并看完。</p>
+<hr>
+<h2 id="四、安装-VS-Code-插件"><a href="#四、安装-VS-Code-插件" class="headerlink" title="四、安装 VS Code 插件"></a>四、安装 VS Code 插件</h2><p>最后一步，我们需要在 VS Code 中安装几个常用插件，让 Claude Code 和前端开发体验更流畅。</p>
+<p>本篇建议安装以下两个插件：</p>
+<h3 id="1-Claude-Code-for-VS-Code"><a href="#1-Claude-Code-for-VS-Code" class="headerlink" title="1. Claude Code for VS Code"></a>1. Claude Code for VS Code</h3><p>这个插件主要是为了让 Claude Code 更好地与 VS Code 编辑器配合使用。</p>
+<p>安装方法：</p>
+<ol>
+<li>打开 VS Code</li>
+<li>点击左侧扩展插件图标</li>
+<li>搜索 <code>Claude Code for VS Code</code></li>
+<li>点击安装</li>
+</ol>
+<p>安装完成后，按照插件提示进行登录、配置或连接本地 Claude Code。如果配置成功，你就可以在 VS Code 里更方便地调用 Claude Code 了。</p>
+<h3 id="2-外接-DeepSeek-大模型"><a href="#2-外接-DeepSeek-大模型" class="headerlink" title="2. 外接 DeepSeek 大模型"></a>2. 外接 DeepSeek 大模型</h3><p>本博主使用的是外接 <strong>DeepSeek-V4 Pro【1M】</strong> 方案，相关教程视频如下：</p>
+<blockquote>
+<p><strong>注意：</strong> 这一步需要在安装好 Claude Code 以及中转工具 CC Switch 之后再进行。</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ia9UBPESQ/?s">Claude 外接 DeepSeek-V4 Pro 完整教程</a></li>
+</ul>
+<hr>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这些步骤当时博主真是一个一个翻找摸索出来的，在没有全流程教程的情况下，光是找资源和下载我就花了好几天时间。</p>
+<p>可能有人会问：<strong>为什么不直接使用 Claude 官方大模型，而要接 DeepSeek？</strong> 主要有以下几个原因：</p>
+<h3 id="1-地区限制"><a href="#1-地区限制" class="headerlink" title="1. 地区限制"></a>1. 地区限制</h3><p>Claude 的官方模型订阅并不是全球开放的，至少目前不对国内开放。所以你访问 Claude 官网就会看到”暂不对该地区开放”的提示。</p>
+<h3 id="2-风控严格"><a href="#2-风控严格" class="headerlink" title="2. 风控严格"></a>2. 风控严格</h3><p>目前 Claude 官方模型的封控非常严格。在官方平台订阅会经历极其严格的新账号审核、异常登录检测、设备及设备 IP 风险判断，任何一环出问题都可能导致封号。</p>
+<h3 id="3-账号和环境不匹配"><a href="#3-账号和环境不匹配" class="headerlink" title="3. 账号和环境不匹配"></a>3. 账号和环境不匹配</h3><p>常见问题包括：</p>
+<ul>
+<li>注册邮箱和付款信息不一致</li>
+<li>IP 频繁跳变</li>
+<li>浏览器环境异常</li>
+<li>曾经失败次数过多被临时限制</li>
+</ul>
+<p>鉴于以上原因，现在基本都采用 CC Switch 外接其他大模型的方案。而 <strong>DeepSeek 的价格优惠程度是其他平台难以比拟的</strong>。对初学者来说，无论是练习提示词功力还是熟悉 Claude Code 的使用，DeepSeek 都极具性价比，所以我非常推荐它（优惠截至时间26.5.31）。</p>
+<p>当然，这并不代表你必须使用 DeepSeek。如果经济上没有压力，市面上其他大模型也都可以尝试，这并没有太大关系。</p>
+<hr>
+<h2 id="🎉-结语"><a href="#🎉-结语" class="headerlink" title="🎉 结语"></a>🎉 结语</h2><p><strong>面向超级小白来说，很多人可能会觉得：这玩意儿安装都这么麻烦，那我真正用起来是不是会更麻烦？其实并不是。Claude Code 本身非常简单，你只需要输入提示词，告诉它你想要什么，它就会按照你的要求去执行。哪怕你输入的是中文，它也能直接给出中文的解决方案，所以大家完全可以放心上手，不用顾虑太多，先用起来再说。</strong></p>
+<p><strong>最后，恭喜已经成功安装的朋友们——现在你们可以正式使用 Claude Code 外接大模型了，尽情发挥自己的创造力吧！</strong></p>
+<blockquote>
+<p><em>El Psy Congroo！</em></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lllsj666.github.io">覆</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lllsj666.github.io/2026/05/11/%E5%89%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8AClaude%E4%B8%8B%E8%BD%BD%E8%BF%90%E7%94%A8%E5%85%A8%E6%B5%81%E7%A8%8B/">https://lllsj666.github.io/2026/05/11/%E5%89%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8AClaude%E4%B8%8B%E8%BD%BD%E8%BF%90%E7%94%A8%E5%85%A8%E6%B5%81%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lllsj666.github.io" target="_blank">覆的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Claude-Code/">Claude Code</a><a class="post-meta__tags" href="/tags/AI-%E7%BC%96%E7%A0%81/">AI 编码</a><a class="post-meta__tags" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</a><a class="post-meta__tags" href="/tags/VS-Code/">VS Code</a><a class="post-meta__tags" href="/tags/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/">新手教程</a><a class="post-meta__tags" href="/tags/DeepSeek/">DeepSeek</a></div><div class="post-share"><div class="social-share" data-image="/img/%E6%96%87%E7%AB%A0/FG3.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/05/07/2026-05-09-mbti-test-site/" title="从零搭建了一个 MBTI 性格测试网站——全流程复盘"><img class="cover" src="/img/%E6%96%87%E7%AB%A0/FG002.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">从零搭建了一个 MBTI 性格测试网站——全流程复盘</div></div><div class="info-2"><div class="info-item-1">前言某天突然冒出一个念头：想做一个测试网站从零到上线。 没有多复杂的动机，就是觉得这件事有意思，想做出来看看。现在回头看，从本地敲下第一行代码，到网站正式上线、朋友开始分享测试结果，整个过程比预想的顺利，也比预想的好玩。 这篇文章是一...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E7%BB%99%E6%88%91%E6%93%A6%E7%9A%AE%E9%9E%8B.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">覆</div><div class="author-info-description">一个冷酷的人正在折腾他的博客。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" href="/about/"><i class="fas fa-comment"></i><span>关于我</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://space.bilibili.com/233814294" target="_blank" title="Bilibili"><i class="fas fa-play-circle" style="color: #fb7299;"></i></a><a class="social-icon" href="https://music.163.com/#/user/home?id=383357194" target="_blank" title="网易云"><i class="fas fa-music" style="color: #c62f2f;"></i></a><a class="social-icon" href="mailto:508567376@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #b8a6d9;"></i></a><a class="social-icon" href="/about/" target="_blank" title="关于"><i class="fas fa-link" style="color: #7f6aa3;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96%EF%BC%9AGit%E3%80%81Node-js-Next-js"><span class="toc-number">2.</span> <span class="toc-text">一、安装基础环境依赖：Git、Node.js &#x2F; Next.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-Git"><span class="toc-number">2.1.</span> <span class="toc-text">1. 安装 Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85-Node-js"><span class="toc-number">2.2.</span> <span class="toc-text">2. 安装 Node.js</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-VS-Code%EF%BC%9A%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">二、安装 VS Code：常用代码编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85-Claude-Code-%E4%B8%8E-CC-Switch"><span class="toc-number">4.</span> <span class="toc-text">三、安装 Claude Code 与 CC Switch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E8%A3%85-VS-Code-%E6%8F%92%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">四、安装 VS Code 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Claude-Code-for-VS-Code"><span class="toc-number">5.1.</span> <span class="toc-text">1. Claude Code for VS Code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%96%E6%8E%A5-DeepSeek-%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.2.</span> <span class="toc-text">2. 外接 DeepSeek 大模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">6.</span> <span class="toc-text">后记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9C%B0%E5%8C%BA%E9%99%90%E5%88%B6"><span class="toc-number">6.1.</span> <span class="toc-text">1. 地区限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%A3%8E%E6%8E%A7%E4%B8%A5%E6%A0%BC"><span class="toc-number">6.2.</span> <span class="toc-text">2. 风控严格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%B4%A6%E5%8F%B7%E5%92%8C%E7%8E%AF%E5%A2%83%E4%B8%8D%E5%8C%B9%E9%85%8D"><span class="toc-number">6.3.</span> <span class="toc-text">3. 账号和环境不匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%89-%E7%BB%93%E8%AF%AD"><span class="toc-number">7.</span> <span class="toc-text">🎉 结语</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/05/11/%E5%89%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8AClaude%E4%B8%8B%E8%BD%BD%E8%BF%90%E7%94%A8%E5%85%A8%E6%B5%81%E7%A8%8B/" title="Claude Code 安装与前置环境配置全流程教程"><img src="/img/%E6%96%87%E7%AB%A0/FG3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Claude Code 安装与前置环境配置全流程教程"/></a><div class="content"><a class="title" href="/2026/05/11/%E5%89%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8AClaude%E4%B8%8B%E8%BD%BD%E8%BF%90%E7%94%A8%E5%85%A8%E6%B5%81%E7%A8%8B/" title="Claude Code 安装与前置环境配置全流程教程">Claude Code 安装与前置环境配置全流程教程</a><time datetime="2026-05-10T16:00:00.000Z" title="发表于 2026-05-11 00:00:00">2026-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/07/2026-05-09-mbti-test-site/" title="从零搭建了一个 MBTI 性格测试网站——全流程复盘"><img src="/img/%E6%96%87%E7%AB%A0/FG002.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零搭建了一个 MBTI 性格测试网站——全流程复盘"/></a><div class="content"><a class="title" href="/2026/05/07/2026-05-09-mbti-test-site/" title="从零搭建了一个 MBTI 性格测试网站——全流程复盘">从零搭建了一个 MBTI 性格测试网站——全流程复盘</a><time datetime="2026-05-07T04:00:00.000Z" title="发表于 2026-05-07 12:00:00">2026-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/27/hello-world/" title="博客上线记录"><img src="/img/%E6%96%87%E7%AB%A0/1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="博客上线记录"/></a><div class="content"><a class="title" href="/2026/04/27/hello-world/" title="博客上线记录">博客上线记录</a><time datetime="2026-04-26T16:00:00.000Z" title="发表于 2026-04-27 00:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 覆 Future Gadget Lab &middot; FG-001</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  function initQQMailAutoComplete(el) {
+    const timer = setInterval(() => {
+      const mailInput = el.querySelector('input[name="mail"]')
+      if (!mailInput) return
+      clearInterval(timer)
+
+      mailInput.addEventListener('blur', function () {
+        const value = this.value.trim()
+        if (/^[1-9][0-9]{4,11}$/.test(value)) {
+          this.value = value + '@qq.com'
+          this.dispatchEvent(new Event('input', { bubbles: true }))
+          this.dispatchEvent(new Event('change', { bubbles: true }))
+        }
+      })
+    }, 500)
+  }
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://12-ashen-three.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      login: 'disable',
+      meta: ['nick', 'mail', 'link'],
+      requiredMeta: ['nick', 'mail'],
+      locale: {
+        placeholder: '欢迎留言！邮箱框可以直接填写 QQ 号，会自动补全为 QQ 邮箱。'
+      },
+      ...option,
+      path: window.location.pathname
+    })
+
+    initQQMailAutoComplete(el)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.8.0/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.8.0/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline }
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><div id="particle-bg"></div><script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script><script>particlesJS.load("particle-bg", "/js/particles-config.json");</script><script src="/js/click-effect.js"></script><script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("#sidebar-menus .menus_items .site-page.group").forEach(e=>e.classList.add("hide"))})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
