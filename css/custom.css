@@ -2859,3 +2859,101 @@ a:hover,
   }
 }
 
+/* ========================================
+   POST BOTTOM TAGS OPTIMIZATION
+   文章底部标签 + 分享按钮，PC/移动端统一整洁
+   ======================================== */
+
+/* --- 标签容器 --- */
+#post .tag_share {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  margin-top: 30px !important;
+  padding-top: 20px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* --- 单个标签 --- */
+#post .tag_share .post-meta__tags {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 5px 14px !important;
+  border: 1px solid #b8a6d9 !important;
+  border-radius: 20px !important;
+  background: rgba(184, 166, 217, 0.06) !important;
+  color: #7c6aa0 !important;
+  font-size: 0.85em !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+
+#post .tag_share .post-meta__tags:hover {
+  background: #b8a6d9 !important;
+  color: #ffffff !important;
+  border-color: #b8a6d9 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 12px rgba(184, 166, 217, 0.3) !important;
+}
+
+/* --- 标签列表容器 --- */
+#post .tag_share .post-meta__tag-list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+/* --- 分享按钮区域 --- */
+#post .tag_share .post-share {
+  float: none !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+#post .tag_share .post-share .social-share .social-share-icon {
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+}
+
+/* --- 深色模式 --- */
+[data-theme="dark"] #post .tag_share {
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] #post .tag_share .post-meta__tags {
+  border-color: rgba(184, 166, 217, 0.35) !important;
+  background: rgba(184, 166, 217, 0.1) !important;
+  color: #c4b5e0 !important;
+}
+
+[data-theme="dark"] #post .tag_share .post-meta__tags:hover {
+  background: #b8a6d9 !important;
+  color: #1a1a2e !important;
+}
+
+/* --- 移动端：标签和分享按钮各占一行 --- */
+@media screen and (max-width: 900px) {
+  #post .tag_share {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+  }
+
+  #post .tag_share .post-meta__tag-list {
+    width: 100% !important;
+  }
+
+  #post .tag_share .post-meta__tags {
+    padding: 6px 16px !important;
+    font-size: 0.88em !important;
+  }
+
+  #post .tag_share .post-share {
+    align-self: flex-end !important;
+  }
+}
+
