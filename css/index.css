@@ -5007,17 +5007,31 @@ figure.highlight pre .javascript .function {
   content: '';
 }
 #post .tag_share .post-meta__tag-list {
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-box;
+  display: inline-flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 8px;
+  vertical-align: middle;
 }
 #post .tag_share .post-meta__tags {
   display: inline-block;
-  margin: 8px 8px 8px 0;
-  padding: 0 12px;
+  margin: 0;
+  padding: 4px 12px;
   width: fit-content;
   border: 1px solid #49b1f5;
   border-radius: 12px;
   color: #49b1f5;
   font-size: 0.85em;
+  line-height: 1.6;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -5027,6 +5041,13 @@ figure.highlight pre .javascript .function {
 #post .tag_share .post-meta__tags:hover {
   background: #49b1f5;
   color: var(--white);
+}
+@media screen and (max-width: 768px) {
+  #post .tag_share .post-meta__tags {
+    padding: 2px 10px;
+    font-size: 0.8em;
+    border-radius: 10px;
+  }
 }
 #post .tag_share .post-share {
   display: inline-block;
