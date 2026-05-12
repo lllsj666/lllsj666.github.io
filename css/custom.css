@@ -2784,6 +2784,18 @@ a.resource-card,
   99% { opacity: 1; transform: translateX(0); }
 }
 
+/* 数字跳变时的抖动闪烁 */
+@keyframes wl-glitch {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(1.5px); }
+  40% { transform: translateX(-1.5px); }
+  60% { transform: translateX(-0.8px); }
+  80% { transform: translateX(0.8px); }
+}
+.wl-counter.glitching {
+  animation: wl-counter-flicker 0.12s ease-in-out infinite, wl-glitch 0.15s ease-in-out infinite;
+}
+
 .wl-hero h1 {
   color: #0f172a !important;
   font-size: 2rem;
@@ -3456,12 +3468,26 @@ a.resource-card,
 .recent-post-info .article-title {
   color: #1f2937 !important;
   font-weight: 700 !important;
+  transition: color 0.25s ease, text-shadow 0.25s ease, transform 0.25s ease;
+}
+
+#recent-posts .recent-post-item:hover .article-title,
+.recent-post-item:hover .article-title {
+  color: #FF7A2A !important;
+  text-shadow: 0 0 8px rgba(255, 122, 42, 0.4);
+  transform: translateX(3px);
 }
 
 [data-theme="dark"] #recent-posts .recent-post-item > .recent-post-info > .article-title,
 [data-theme="dark"] #recent-posts .recent-post-item .article-title,
 [data-theme="dark"] .recent-post-info .article-title {
   color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] #recent-posts .recent-post-item:hover .article-title,
+[data-theme="dark"] .recent-post-item:hover .article-title {
+  color: #FFA04D !important;
+  text-shadow: 0 0 10px rgba(255, 160, 77, 0.5);
 }
 
 /* --- 侧边栏卡片标题 --- */
@@ -3837,6 +3863,19 @@ a.resource-card,
   text-shadow: none;
 }
 
+/* 打字字幕抖动 */
+@keyframes sub-glitch {
+  0%, 100% { transform: translateX(0); text-shadow: 0 0 1px rgba(255,160,77,0.6); }
+  15% { transform: translateX(3px); text-shadow: 0 0 8px rgba(245,158,11,0.7), 0 0 16px rgba(245,158,11,0.3); }
+  35% { transform: translateX(-3px); text-shadow: 0 0 1px rgba(255,160,77,0.2); }
+  55% { transform: translateX(-1.5px); text-shadow: 0 0 6px rgba(245,158,11,0.5); }
+  75% { transform: translateX(1.5px); text-shadow: 0 0 1px rgba(255,160,77,0.4); }
+}
+#subtitle.glitching {
+  display: inline-block;
+  animation: sub-glitch 0.25s ease-in-out;
+}
+
 /* ===== 移动端 Steins;Gate 风格适配 ===== */
 
 /* 1. 移动端 subtitle 打字效果优化 */
@@ -3908,18 +3947,7 @@ a.resource-card,
   }
 }
 
-/* 3. 移动端文章卡片标题轻微增强（可选氛围） */
-@media screen and (max-width: 768px) {
-  #recent-posts .recent-post-item .article-title {
-    transition: all 0.3s ease;
-  }
-  #recent-posts .recent-post-item .article-title:hover {
-    color: #FFA04D !important;
-    text-shadow: 0 0 6px rgba(255, 106, 26, 0.4);
-  }
-}
-
-/* 4. 修复 Butterfly 主题在某些机型上 subtitle 被隐藏的问题 */
+/* 3. 修复 Butterfly 主题在某些机型上 subtitle 被隐藏的问题 */
 @media screen and (max-width: 768px) {
   #site-info #site-title,
   #site-info #site-subtitle,
