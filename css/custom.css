@@ -1565,10 +1565,10 @@ a.resource-card,
   background: rgba(37, 99, 235, 0.18) !important;
 }
 
-/* --- 图片降亮 --- */
+/* --- 图片暗色模式微调（保留清晰度） --- */
 [data-theme="dark"] #recent-posts .post_cover img,
 [data-theme="dark"] .aside-list img {
-  filter: brightness(0.82) saturate(0.9);
+  filter: brightness(0.9);
   transition: filter 0.22s ease;
 }
 
@@ -2648,16 +2648,19 @@ a.resource-card,
   align-items: center;
   gap: 8px;
   position: relative;
-  background: #020617;
-  border: 1px solid #3d1a0c;
-  border-radius: 8px;
+  background: radial-gradient(ellipse at center, rgba(20, 14, 8, 0.7) 0%, rgba(6, 4, 2, 0.92) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: 10px;
   padding: 8px 20px;
   margin-bottom: 20px;
   font-family: 'Courier New', Courier, monospace;
-  box-shadow: 0 0 10px rgba(245, 158, 11, 0.12), inset 0 0 4px rgba(245, 158, 11, 0.04);
+  box-shadow:
+    0 0 6px rgba(245, 158, 11, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02),
+    inset 0 0 20px rgba(0, 0, 0, 0.3);
   animation: wl-meter-glow 5s ease-in-out infinite;
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 /* 边框发光扫过 — 仿 nixie 管灯丝通电 */
@@ -2731,16 +2734,25 @@ a.resource-card,
 /* 外发光呼吸 */
 @keyframes wl-meter-glow {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.12), inset 0 0 4px rgba(245, 158, 11, 0.04);
-    border-color: #3d1a0c;
+    box-shadow:
+      0 0 6px rgba(245, 158, 11, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.02),
+      inset 0 0 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(245, 158, 11, 0.15);
   }
   33% {
-    box-shadow: 0 0 16px rgba(234, 88, 12, 0.18), inset 0 0 7px rgba(234, 88, 12, 0.06);
-    border-color: #4a2010;
+    box-shadow:
+      0 0 10px rgba(234, 88, 12, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03),
+      inset 0 0 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(234, 88, 12, 0.22);
   }
   66% {
-    box-shadow: 0 0 13px rgba(220, 38, 38, 0.14), inset 0 0 5px rgba(220, 38, 38, 0.05);
-    border-color: #3d1808;
+    box-shadow:
+      0 0 8px rgba(245, 158, 11, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.02),
+      inset 0 0 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(245, 158, 11, 0.15);
   }
 }
 
@@ -2755,16 +2767,21 @@ a.resource-card,
   }
 }
 
-/* 数字闪烁 — 柔和 */
+/* 数字闪烁 — 轻微故障感 */
 @keyframes wl-counter-flicker {
-  0%, 100% { opacity: 1; }
-  93% { opacity: 1; }
-  94% { opacity: 0.8; }
-  95% { opacity: 0.95; }
-  96% { opacity: 0.72; }
-  97% { opacity: 0.9; }
-  98% { opacity: 0.78; }
-  99% { opacity: 1; }
+  0%, 100% { opacity: 1; transform: translateX(0); }
+  92% { opacity: 1; transform: translateX(0); }
+  93% { opacity: 0.85; transform: translateX(0); }
+  93.5% { opacity: 0.6; transform: translateX(1px); }
+  94% { opacity: 0.9; transform: translateX(-0.5px); }
+  94.5% { opacity: 0.7; transform: translateX(0); }
+  95% { opacity: 0.95; transform: translateX(0); }
+  96% { opacity: 0.65; transform: translateX(-1px); }
+  96.5% { opacity: 0.85; transform: translateX(0.5px); }
+  97% { opacity: 0.9; transform: translateX(0); }
+  98% { opacity: 0.72; transform: translateX(0); }
+  98.5% { opacity: 0.95; transform: translateX(0); }
+  99% { opacity: 1; transform: translateX(0); }
 }
 
 .wl-hero h1 {
@@ -2836,31 +2853,48 @@ a.resource-card,
 [data-theme="dark"] .wl-subtitle { color: #94a3b8 !important; }
 [data-theme="dark"] .wl-desc { color: #64748b !important; }
 [data-theme="dark"] .wl-divergence-meter {
-  border-color: #4a1e0c;
-  box-shadow: 0 0 18px rgba(245, 158, 11, 0.2), inset 0 0 8px rgba(245, 158, 11, 0.06);
+  background: radial-gradient(ellipse at center, rgba(20, 14, 8, 0.75) 0%, rgba(4, 2, 0, 0.94) 100%);
+  border-color: rgba(245, 158, 11, 0.18);
+  box-shadow:
+    0 0 10px rgba(245, 158, 11, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.015),
+    inset 0 0 24px rgba(0, 0, 0, 0.4);
   animation-name: wl-meter-glow-dark;
 }
 @keyframes wl-meter-glow-dark {
   0%, 100% {
-    box-shadow: 0 0 18px rgba(245, 158, 11, 0.2), inset 0 0 8px rgba(245, 158, 11, 0.06);
-    border-color: #4a1e0c;
+    box-shadow:
+      0 0 10px rgba(245, 158, 11, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.015),
+      inset 0 0 24px rgba(0, 0, 0, 0.4);
+    border-color: rgba(245, 158, 11, 0.18);
   }
   33% {
-    box-shadow: 0 0 26px rgba(234, 88, 12, 0.28), inset 0 0 12px rgba(234, 88, 12, 0.1);
-    border-color: #5a2a16;
+    box-shadow:
+      0 0 18px rgba(234, 88, 12, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.02),
+      inset 0 0 24px rgba(0, 0, 0, 0.4);
+    border-color: rgba(234, 88, 12, 0.28);
   }
   66% {
-    box-shadow: 0 0 22px rgba(220, 38, 38, 0.22), inset 0 0 10px rgba(220, 38, 38, 0.08);
-    border-color: #4e1a0c;
+    box-shadow:
+      0 0 14px rgba(245, 158, 11, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.015),
+      inset 0 0 24px rgba(0, 0, 0, 0.4);
+    border-color: rgba(245, 158, 11, 0.18);
   }
 }
 
 /* ===== 变动仪 hover/touch 互动 ===== */
 .wl-divergence-meter:hover {
   animation-duration: 3s !important;
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.25), inset 0 0 10px rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  box-shadow:
+    0 0 16px rgba(245, 158, 11, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    inset 0 0 20px rgba(0, 0, 0, 0.3) !important;
   transform: scale(1.02);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .wl-divergence-meter:hover::before {
@@ -2869,7 +2903,12 @@ a.resource-card,
 
 .wl-divergence-meter:active {
   transform: scale(0.98);
-  box-shadow: 0 0 32px rgba(245, 158, 11, 0.4), 0 0 60px rgba(234, 88, 12, 0.3), inset 0 0 16px rgba(245, 158, 11, 0.18) !important;
+  border-color: rgba(234, 88, 12, 0.4) !important;
+  box-shadow:
+    0 0 22px rgba(245, 158, 11, 0.25),
+    0 0 40px rgba(234, 88, 12, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    inset 0 0 20px rgba(0, 0, 0, 0.3) !important;
   transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 
@@ -2893,12 +2932,21 @@ a.resource-card,
 @media screen and (max-width: 768px) {
   .wl-hero { padding: 1.5rem 1rem 1rem; }
   .wl-hero h1 { font-size: 1.5rem; }
-  .wl-meter-value { font-size: 1.3rem; }
 
   .wl-divergence-meter {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     padding: 6px 14px;
     border-radius: 6px;
     animation-duration: 7s;
+  }
+  .wl-meter-value {
+    font-size: 1.2rem;
+    animation-duration: 3s;
+  }
+  .wl-meter-label {
+    font-size: 0.65rem;
   }
   .wl-divergence-meter::before {
     animation-duration: 12s;
@@ -2908,9 +2956,6 @@ a.resource-card,
   }
   .wl-divergence-meter:hover::before {
     animation-duration: 5s !important;
-  }
-  .wl-meter-value {
-    animation-duration: 2.4s;
   }
 }
 
@@ -3782,20 +3827,14 @@ a.resource-card,
   letter-spacing: 0.06em;
   color: #FFA04D !important;
   text-shadow:
-    0 0 1px #FFD4A3,
-    0 0 3px rgba(255, 160, 77, 0.9),
-    0 0 8px rgba(255, 106, 26, 0.4),
-    0 0 16px rgba(255, 59, 0, 0.2);
+    0 0 1px rgba(255, 160, 77, 0.6);
   transition: text-shadow 0.3s ease;
 }
 
 #subtitle .typed-cursor {
   color: #FFA04D !important;
   font-weight: 500;
-  text-shadow:
-    0 0 1px #FFD4A3,
-    0 0 3px rgba(255, 160, 77, 0.9),
-    0 0 8px rgba(255, 106, 26, 0.35);
+  text-shadow: none;
 }
 
 /* ===== 移动端 Steins;Gate 风格适配 ===== */
@@ -3807,19 +3846,13 @@ a.resource-card,
     font-weight: 600 !important;
     letter-spacing: 0.05em !important;
     color: #FFA04D !important;
-    text-shadow:
-      0 0 1px #FFD4A3,
-      0 0 4px rgba(255, 160, 77, 0.95),
-      0 0 10px rgba(255, 106, 26, 0.5),
-      0 0 18px rgba(255, 59, 0, 0.25) !important;
+    text-shadow: 0 0 1px rgba(255, 160, 77, 0.5) !important;
     line-height: 1.6 !important;
   }
 
   #subtitle .typed-cursor {
     color: #FFA04D !important;
-    text-shadow:
-      0 0 1px #FFD4A3,
-      0 0 4px rgba(255, 160, 77, 0.95) !important;
+    text-shadow: none !important;
   }
 
   /* site-name 主标题也增强一下，保持视觉统一 */
