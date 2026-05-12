@@ -3798,3 +3798,102 @@ a.resource-card,
     0 0 8px rgba(255, 106, 26, 0.35);
 }
 
+/* ===== 移动端 Steins;Gate 风格适配 ===== */
+
+/* 1. 移动端 subtitle 打字效果优化 */
+@media screen and (max-width: 768px) {
+  #subtitle {
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    color: #FFA04D !important;
+    text-shadow:
+      0 0 1px #FFD4A3,
+      0 0 4px rgba(255, 160, 77, 0.95),
+      0 0 10px rgba(255, 106, 26, 0.5),
+      0 0 18px rgba(255, 59, 0, 0.25) !important;
+    line-height: 1.6 !important;
+  }
+
+  #subtitle .typed-cursor {
+    color: #FFA04D !important;
+    text-shadow:
+      0 0 1px #FFD4A3,
+      0 0 4px rgba(255, 160, 77, 0.95) !important;
+  }
+
+  /* site-name 主标题也增强一下，保持视觉统一 */
+  #site-name,
+  #site_social_icons {
+    text-shadow: 0 0 8px rgba(255, 106, 26, 0.3);
+  }
+}
+
+/* 2. 移动端侧边栏 widget（世界线记录、博主日常、分类、标签等）配色统一 */
+@media screen and (max-width: 768px) {
+  #aside-content .card-widget {
+    background: rgba(20, 15, 12, 0.55) !important;
+    border: 1px solid rgba(255, 106, 26, 0.18);
+    border-radius: 8px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  /* widget 标题（"世界线记录""分类""标签"等） */
+  #aside-content .item-headline,
+  #aside-content .card-widget .item-headline span {
+    color: #FFA04D !important;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 4px rgba(255, 106, 26, 0.4);
+  }
+
+  /* widget 内的链接文字（归档月份、分类名、标签名等） */
+  #aside-content .card-widget a,
+  #aside-content .aside-list-item a,
+  #aside-content .card-archives a,
+  #aside-content .card-categories a {
+    color: rgba(255, 200, 150, 0.92) !important;
+    transition: all 0.25s ease;
+  }
+
+  #aside-content .card-widget a:hover {
+    color: #FFA04D !important;
+    text-shadow: 0 0 6px rgba(255, 106, 26, 0.6);
+  }
+
+  /* 数字角标（文章数量等） */
+  #aside-content .length-num {
+    color: #FF7A2A !important;
+    font-weight: 600;
+  }
+
+  /* 标签云在移动端的可读性 */
+  #aside-content .card-tags .card-tag-cloud a {
+    color: rgba(255, 200, 150, 0.85) !important;
+    font-size: 0.95em !important;
+  }
+}
+
+/* 3. 移动端文章卡片标题轻微增强（可选氛围） */
+@media screen and (max-width: 768px) {
+  #recent-posts .recent-post-item .article-title {
+    transition: all 0.3s ease;
+  }
+  #recent-posts .recent-post-item .article-title:hover {
+    color: #FFA04D !important;
+    text-shadow: 0 0 6px rgba(255, 106, 26, 0.4);
+  }
+}
+
+/* 4. 修复 Butterfly 主题在某些机型上 subtitle 被隐藏的问题 */
+@media screen and (max-width: 768px) {
+  #site-info #site-title,
+  #site-info #site-subtitle,
+  #site-info #subtitle {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
