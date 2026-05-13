@@ -164,7 +164,7 @@ index_top_img_height:
 subtitle:
   enable: true
   # Typewriter Effect
-  effect: true
+  effect: false
   # Customize typed.js
   # https://github.com/mattboldt/typed.js/#customization
   typed_option:
@@ -178,7 +178,7 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
-    - 世界线跳跃中，观测并记录本博主的日常。
+    - 世界线跳跃中，观测并记录本博主的日常
 
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
@@ -1078,6 +1078,7 @@ inject:
     - <script>particlesJS.load("particle-bg", "/js/particles-config.json");</script>
     - <script src="/js/click-effect.js"></script>
     - <script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("#sidebar-menus .menus_items .site-page.group").forEach(e=>e.classList.add("hide"))})</script>
+    - <script>/* 世界线打字 + 故障消失 */ (function(){var s=document.getElementById("subtitle");if(!s)return;window.typed=window.typed||{destroy:function(){}};var msg="世界线跳跃中，观测并记录本博主的日常",idx=0,step=0,timer=null;function cls(n){s.className=n||""}function upd(t){s.textContent=t;s.setAttribute("data-text",t)}function done(){s.style.display="";cls("");upd("");idx=0;step=0;timer=setTimeout(loop,2000)}function runSeq(list,cb){var i=0;function nxt(){if(i>=list.length){if(cb)cb();return}var it=list[i];if(typeof it==="number"){i++;timer=setTimeout(nxt,it)}else{cls(Array.isArray(it)?it.join(" "):it);i++;timer=setTimeout(nxt,40+Math.random()*30)}}nxt()}function loop(){if(step===0){if(idx<msg.length){idx++;upd(msg.substring(0,idx));timer=setTimeout(loop,80+Math.random()*35);return}step=1;timer=setTimeout(loop,800);return}if(step===1){runSeq(["glitching",120,"",150,"burst",200,"burst",100,"",100,"glitching",180,""],function(){step=2;timer=setTimeout(loop,160)})}else if(step===2){runSeq(["burst",80,"",60,["burst","glitching"],120,["burst","glitching","tear"],60,["burst","tear"],40,"glitching",100,""],function(){step=3;timer=setTimeout(loop,80)})}else if(step===3){runSeq([["burst","glitching"],40,["burst","glitching","tear"],30,["tear","burst"],20,"cut"],function(){done()})}}upd("");timer=setTimeout(loop,300)})();</script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work

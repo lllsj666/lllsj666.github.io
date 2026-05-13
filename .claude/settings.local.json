@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL \"https://lllsj666.github.io/css/custom.css\")",
+      "Bash(curl -sL \"https://lllsj666.github.io/\")"
+    ]
+  }
+}
