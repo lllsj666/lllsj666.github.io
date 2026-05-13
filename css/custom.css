@@ -4475,3 +4475,90 @@ a.featured-card:hover .featured-card-btn {
   }
 }
 
+/* ========================================
+   22. Mobile P1 Polish - Header & Footer
+   ======================================== */
+
+/* --- 首页全屏头图压缩 --- */
+@media screen and (max-width: 768px) {
+  #page-header.full_page {
+    min-height: 45vh !important;
+    height: auto !important;
+  }
+
+  #page-header.full_page #site-title {
+    font-size: 1.8rem !important;
+  }
+
+  #page-header.full_page #site-subtitle {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* --- 非首页 / 文章页头图压缩 --- */
+@media screen and (max-width: 768px) {
+  #page-header.not-home-page {
+    min-height: 30vh !important;
+    height: auto !important;
+  }
+
+  #page-header.post-bg {
+    min-height: 35vh !important;
+    height: auto !important;
+  }
+
+  #post-info .post-title {
+    font-size: 1.4em !important;
+    line-height: 1.35 !important;
+  }
+}
+
+/* --- 页脚瘦身 --- */
+@media screen and (max-width: 768px) {
+  #footer {
+    padding: 20px 16px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.6 !important;
+  }
+
+  #footer a {
+    font-size: 0.8rem !important;
+  }
+
+  #footer .copyright,
+  #footer .framework-info,
+  #footer .footer_custom_text {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* --- 480px 进一步压缩 --- */
+@media screen and (max-width: 480px) {
+  #page-header.full_page {
+    min-height: 38vh !important;
+  }
+
+  #page-header.not-home-page {
+    min-height: 25vh !important;
+  }
+
+  #page-header.post-bg {
+    min-height: 28vh !important;
+  }
+
+  #post-info .post-title {
+    font-size: 1.25em !important;
+  }
+
+  #footer {
+    padding: 16px 12px !important;
+    font-size: 0.75rem !important;
+  }
+
+  #footer .copyright,
+  #footer .framework-info,
+  #footer .footer_custom_text {
+    font-size: 0.7rem !important;
+  }
+}
+
