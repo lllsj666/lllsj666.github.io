@@ -4482,8 +4482,9 @@ a.featured-card:hover .featured-card-btn {
 /* --- 首页全屏头图压缩 --- */
 @media screen and (max-width: 768px) {
   #page-header.full_page {
-    min-height: 45vh !important;
-    height: auto !important;
+    height: 52vh !important;
+    min-height: 340px !important;
+    max-height: 520px !important;
   }
 
   #page-header.full_page #site-title {
@@ -4535,7 +4536,9 @@ a.featured-card:hover .featured-card-btn {
 /* --- 480px 进一步压缩 --- */
 @media screen and (max-width: 480px) {
   #page-header.full_page {
-    min-height: 38vh !important;
+    height: 46vh !important;
+    min-height: 300px !important;
+    max-height: 440px !important;
   }
 
   #page-header.not-home-page {
