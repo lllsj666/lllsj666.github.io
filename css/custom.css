@@ -4535,25 +4535,13 @@ a.featured-card:hover .featured-card-btn {
   }
 }
 
-/* --- 下滑按钮：彻底不挡点击，弱化显示 --- */
+/* --- 下滑按钮：移动端隐藏 --- */
 @media screen and (max-width: 768px) {
-  #page-header.full_page #scroll-down {
-    position: absolute !important;
-    width: auto !important;
-    height: auto !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    left: 50% !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: 12px !important;
-    transform: translateX(-50%) !important;
-    z-index: 1 !important;
-    pointer-events: none !important;
-    opacity: 0.75 !important;
-  }
-
-  #page-header.full_page #scroll-down .scroll-down-effects {
+  #page-header.full_page #scroll-down,
+  #page-header.full_page .scroll-down-effects {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
     pointer-events: none !important;
   }
 }
