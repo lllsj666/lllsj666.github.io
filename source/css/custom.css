@@ -1,10 +1,35 @@
 /* ========================================
-   Butterfly Theme - Visual Reset
-   半透明白 + 现代字体 + 去除所有深蓝色调
+   Custom CSS — 覆的博客
+   最后更新: 2026-05-13
+   ========================================
+
+   TABLE OF CONTENTS
+   ─────────────────────────────────────
+   01.  视觉重置 (Visual Reset)
+   02.  CSS 变量体系 (Light/Dark)
+   03.  卡片 / 按钮 / 导航 / 底栏
+   04.  首页头图 / 壁纸 / 看板娘
+   05.  入场动画 / 点击特效 / 右下角按钮
+   06.  终极蓝色消灭 (覆盖 #49b1f5)
+   07.  Anime 资源汇总页面卡片
+   08.  About 关于类页面卡片
+   09.  Waline 评论区优化
+   10.  暗色模式全局适配
+   11.  导航栏深度修复
+   12.  移动端性能减负 (Performance)
+   13.  博主日常页面 (Steins;Gate 时间线)
+   14.  移动端布局重塑
+   15.  标题可见性修复
+   16.  标签云 / 分享按钮
+   17.  Steins;Gate 打字效果
+   18.  Mobile Hotfix (溢出/图片/表格/代码)
+   19.  Home Hero (首页 Hero 模块)
+   20.  Featured Posts (首页精选阅读)
+   21.  Resource Placeholder (待补充资源卡片)
    ======================================== */
 
 /* ========================================
-   粒子背景容器
+   01. 视觉重置 — 粒子背景
    ======================================== */
 #particle-bg {
   position: fixed;
@@ -833,7 +858,7 @@ a:hover,
 }
 
 /* ========================================
-   Anime / 资源汇总页面卡片 v2 — 整卡可点击
+   07. Anime / 资源汇总页面卡片
    ======================================== */
 
 .resource-grid,
@@ -1112,7 +1137,7 @@ a.resource-card .resource-tag {
 }
 
 /* ========================================
-   关于类页面卡片 (about-card)
+   08. 关于类页面卡片 (about-card)
    ======================================== */
 .about-card {
   position: relative;
@@ -2343,7 +2368,7 @@ a.resource-card,
 }
 
 /* ========================================
-   移动端性能减负
+   12. 移动端性能减负
    ======================================== */
 @media (max-width: 768px) {
   body {
@@ -4032,8 +4057,7 @@ a.resource-card,
 }
 
 /* ========================================
-   Mobile Hotfix - 2026-05-13
-   修复移动端溢出、图片、表格、代码块和阅读体验
+   18. Mobile Hotfix — 移动端止血修复 (2026-05-13)
    ======================================== */
 
 @media screen and (max-width: 900px) {
@@ -4139,6 +4163,315 @@ a.resource-card,
 
   #article-container p {
     margin-bottom: 0.9rem;
+  }
+}
+
+/* ========================================
+   19. Home Hero — 首页 Hero 模块
+   ======================================== */
+
+.home-hero {
+  text-align: center;
+  padding: 48px 24px 36px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.home-hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fu-title);
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+
+.home-hero-tags {
+  font-size: 0.92rem;
+  color: var(--fu-muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.home-hero-desc {
+  font-size: 0.95rem;
+  color: var(--fu-desc);
+  margin-bottom: 24px;
+}
+
+.home-hero-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home-hero-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.home-hero-btn:hover {
+  transform: translateY(-1px);
+}
+
+.home-hero-btn-primary {
+  background: var(--fu-blue);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.28);
+}
+
+.home-hero-btn-primary:hover {
+  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.38);
+  color: #fff;
+}
+
+.home-hero-btn-secondary {
+  background: var(--fu-card-bg);
+  color: var(--fu-title);
+  border: 1px solid var(--fu-card-border);
+}
+
+.home-hero-btn-secondary:hover {
+  background: var(--fu-card-bg-strong);
+  color: var(--fu-title);
+}
+
+/* --- 移动端 --- */
+@media screen and (max-width: 768px) {
+  .home-hero {
+    padding: 32px 16px 24px;
+  }
+
+  .home-hero-title {
+    font-size: 1.5rem;
+  }
+
+  .home-hero-tags {
+    font-size: 0.82rem;
+  }
+
+  .home-hero-desc {
+    font-size: 0.88rem;
+    margin-bottom: 18px;
+  }
+
+  .home-hero-btn {
+    padding: 8px 22px;
+    font-size: 0.88rem;
+  }
+}
+
+/* ========================================
+   20. Featured Posts — 首页精选阅读
+   ======================================== */
+
+.featured-posts {
+  max-width: 960px;
+  margin: 0 auto 28px;
+  padding: 0 8px;
+}
+
+.featured-heading {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--fu-title);
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* --- 卡片网格：PC 三列 --- */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* --- 整卡可点击 --- */
+a.featured-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--fu-card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--fu-card-border);
+  border-radius: 14px;
+  padding: 22px 20px 18px;
+  text-decoration: none !important;
+  color: inherit !important;
+  box-shadow: var(--fu-shadow);
+  transition: transform 0.18s ease, box-shadow 0.22s ease;
+}
+
+a.featured-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12);
+}
+
+/* --- 类型标签 --- */
+.featured-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.featured-tag-tutorial {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+}
+.featured-tag-project {
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.1);
+}
+.featured-tag-daily {
+  color: #059669;
+  background: rgba(5, 150, 105, 0.1);
+}
+
+[data-theme="dark"] .featured-tag-tutorial {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.14);
+}
+[data-theme="dark"] .featured-tag-project {
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.14);
+}
+[data-theme="dark"] .featured-tag-daily {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.14);
+}
+
+/* --- 卡片标题 --- */
+.featured-card-title {
+  font-size: 1rem;
+  font-weight: 650;
+  color: var(--fu-title);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+/* --- 卡片描述 --- */
+.featured-card-desc {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--fu-desc);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- 阅读按钮 --- */
+.featured-card-btn {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--fu-blue);
+  align-self: flex-start;
+  transition: color 0.15s;
+}
+
+a.featured-card:hover .featured-card-btn {
+  color: var(--fu-blue-hover);
+}
+
+/* --- 窄屏：两列 --- */
+@media screen and (max-width: 900px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- 移动端：单列 + 减间距 --- */
+@media screen and (max-width: 600px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .featured-heading {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+  }
+
+  a.featured-card {
+    padding: 16px 16px 14px;
+    border-radius: 12px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .featured-card-title {
+    font-size: 0.95rem;
+  }
+
+  .featured-card-desc {
+    font-size: 0.82rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* ========================================
+   21. Resource Placeholder — 待补充资源卡片
+   ======================================== */
+
+.resource-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  border-radius: 14px;
+  padding: 22px 20px;
+  cursor: default;
+  opacity: 0.72;
+}
+
+.resource-placeholder h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--fu-title);
+  margin: 0 0 8px;
+}
+
+.resource-placeholder p {
+  font-size: 0.85rem;
+  color: var(--fu-desc);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.resource-tag-pending {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.1);
+}
+
+[data-theme="dark"] .resource-placeholder {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: rgba(148, 163, 184, 0.16);
+}
+
+[data-theme="dark"] .resource-tag-pending {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.14);
+}
+
+/* 移动端占位卡片 */
+@media screen and (max-width: 768px) {
+  .resource-placeholder {
+    padding: 16px 16px;
+    border-radius: 12px;
   }
 }
 

@@ -8,7 +8,7 @@ tags:
 - MBTI
 - Future Gadget Lab
 - FG-002
-cover: /img/文章/FG003.webp
+cover: /img/文章/FG002.webp
 description: 从零到上线搭建一个 MBTI 性格测试网站的完整复盘——技术选型、Next.js + Tailwind CSS + Vercel 实操流程、功能迭代记录，以及那些想加还没加的有趣功能。
 comments: true
 ---

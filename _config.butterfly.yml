@@ -20,10 +20,13 @@ nav:
 menu:
   首页: / || fas fa-home
   文章: /archives/ || fas fa-archive
-  项目: /projects/ || fas fa-code
   资源: /anime/ || fas fa-tv
-  关于: /about/ || fas fa-user
-  留言: /message/ || fas fa-comment-dots
+  关于:
+    关于我: /about/ || fas fa-user
+    实验项目: /projects/ || fas fa-code
+    MBTI : https://mbti-flame-ten.vercel.app/ || fas fa-brain
+    博主日常: /blog-daily/ || fas fa-feather-alt
+    留言板: /message/ || fas fa-comment-dots
 code_blocks:
   # Code block theme: darker / pale night / light / ocean / false
   theme: light
