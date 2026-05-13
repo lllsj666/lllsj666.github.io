@@ -4514,38 +4514,47 @@ a.featured-card:hover .featured-card-btn {
   }
 }
 
-/* --- 首页社交图标：提升层级，保证可点击 --- */
+/* --- 首页社交图标：最高层级，保证绝对可点击 --- */
 @media screen and (max-width: 768px) {
   #page-header.full_page #site-social {
     position: relative !important;
-    z-index: 25 !important;
+    z-index: 30 !important;
     pointer-events: auto !important;
     margin-top: 6px !important;
   }
 
-  #page-header.full_page .social-icon {
+  #page-header.full_page .social-icon,
+  #page-header.full_page #site-info a {
     position: relative !important;
-    z-index: 25 !important;
+    z-index: 30 !important;
     pointer-events: auto !important;
+  }
+
+  #page-header.full_page .social-icon {
     font-size: 1.1rem !important;
   }
 }
 
-/* --- 下滑按钮：固定底部，不挡中间内容 --- */
+/* --- 下滑按钮：彻底不挡点击，弱化显示 --- */
 @media screen and (max-width: 768px) {
   #page-header.full_page #scroll-down {
     position: absolute !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
     left: 50% !important;
     right: auto !important;
     top: auto !important;
-    bottom: 18px !important;
+    bottom: 12px !important;
     transform: translateX(-50%) !important;
-    z-index: 5 !important;
+    z-index: 1 !important;
     pointer-events: none !important;
+    opacity: 0.75 !important;
   }
 
   #page-header.full_page #scroll-down .scroll-down-effects {
-    pointer-events: auto !important;
+    pointer-events: none !important;
   }
 }
 
@@ -4665,7 +4674,7 @@ a.featured-card:hover .featured-card-btn {
   }
 
   #page-header.full_page #scroll-down {
-    bottom: 14px !important;
+    display: none !important;
   }
 }
 
