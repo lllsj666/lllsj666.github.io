@@ -4031,3 +4031,114 @@ a.resource-card,
   }
 }
 
+/* ========================================
+   Mobile Hotfix - 2026-05-13
+   修复移动端溢出、图片、表格、代码块和阅读体验
+   ======================================== */
+
+@media screen and (max-width: 900px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  #body-wrap,
+  #content-inner,
+  .layout,
+  #recent-posts,
+  #article-container {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #article-container {
+    font-size: 16px;
+    line-height: 1.78;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  #article-container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #article-container table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  #article-container pre,
+  #article-container figure.highlight,
+  #article-container .highlight {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  #article-container code {
+    overflow-wrap: break-word;
+  }
+
+  #recent-posts > .recent-post-item,
+  .card-widget,
+  #aside-content .card-widget {
+    border-radius: 14px;
+  }
+
+  .layout {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #aside-content {
+    margin-top: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #article-container {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  #article-container h1 {
+    font-size: 1.55rem;
+  }
+
+  #article-container h2 {
+    font-size: 1.32rem;
+  }
+
+  #article-container h3 {
+    font-size: 1.16rem;
+  }
+
+  #recent-posts > .recent-post-item {
+    margin-bottom: 16px;
+  }
+
+  .card-widget,
+  #recent-posts > .recent-post-item {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .layout {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  #article-container {
+    font-size: 15.8px;
+  }
+
+  #article-container p {
+    margin-bottom: 0.9rem;
+  }
+}
+

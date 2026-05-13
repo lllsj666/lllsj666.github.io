@@ -2,7 +2,7 @@
 title: 关于我
 date: 2026-04-27
 type: about
-comments: true
+comments: false
 ---
 
 # 关于我

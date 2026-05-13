@@ -2,7 +2,7 @@
 title: 资源汇总
 date: 2026-04-27
 type: anime
-comments: true
+comments: false
 ---
 
 <div class="anime-hero">

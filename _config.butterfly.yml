@@ -20,21 +20,10 @@ nav:
 menu:
   首页: / || fas fa-home
   文章: /archives/ || fas fa-archive
-  资源汇总:
-    动漫资源: /anime/#anime-resource || fas fa-tv
-    漫画资源: /anime/#manga-resource || fas fa-book
-    硬核工具: /anime/#tool-resource || fas fa-tools
-    MBTI: https://mbti-flame-ten.vercel.app/ || fas fa-flask
-  站点:
-    分类: /categories/ || fas fa-folder-open
-    标签: /tags/ || fas fa-tags
-    世界线记录: /archives/ || fas fa-globe
-  关于:
-    关于我: /about/ || fas fa-user
-    友链: /link/ || fas fa-link
-    留言板: /message/ || fas fa-comment-dots
-    站点记录: /site-log/ || fas fa-clock
-    博主日常: /blog-daily/ || fas fa-heart
+  项目: /projects/ || fas fa-code
+  资源: /anime/ || fas fa-tv
+  关于: /about/ || fas fa-user
+  留言: /message/ || fas fa-comment-dots
 code_blocks:
   # Code block theme: darker / pale night / light / ocean / false
   theme: light
@@ -552,7 +541,7 @@ comments:
   text: true
   # Lazyload: The comment system will be load when comment element enters the browser's viewport.
   # If you set it to true, the comment count will be invalid
-  lazyload: false
+  lazyload: true
   # Display comment count in post's top_img
   count: false
   # Display comment count in Home Page
@@ -922,7 +911,7 @@ clickShowText:
 # https://github.com/francoischalifour/medium-zoom
 # https://fancyapps.com/fancybox/
 # Leave it empty if you don't need lightbox
-lightbox:
+lightbox: medium_zoom
 
 # --------------------------------------
 # Tag Plugins settings
@@ -1019,14 +1008,14 @@ snackbar:
 
 # Instant.page
 # https://instant.page/
-instantpage: false
+instantpage: true
 
 # Lazyload
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
-  enable: false
+  enable: true
   # Use browser's native lazyload instead of vanilla-lazyload
-  native: false
+  native: true
   # Specify the field to use lazyload (site or post)
   field: site
   placeholder:
@@ -1075,7 +1064,7 @@ inject:
   bottom:
     - <div id="particle-bg"></div>
     - <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    - <script>particlesJS.load("particle-bg", "/js/particles-config.json");</script>
+    - <script>(function(){if(window.matchMedia&&window.matchMedia("(max-width:768px)").matches)return;if(typeof particlesJS!=="undefined")particlesJS.load("particle-bg","/js/particles-config.json")})();</script>
     - <script src="/js/click-effect.js"></script>
     - <script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("#sidebar-menus .menus_items .site-page.group").forEach(e=>e.classList.add("hide"))})</script>
     - <script>/* 世界线打字 + 故障消失 */ (function(){var s=document.getElementById("subtitle");if(!s)return;window.typed=window.typed||{destroy:function(){}};var msg="世界线跳跃中，观测并记录本博主的日常",idx=0,step=0,timer=null;function cls(n){s.className=n||""}function upd(t){s.textContent=t;s.setAttribute("data-text",t)}function done(){s.style.display="";cls("");upd("");idx=0;step=0;timer=setTimeout(loop,2000)}function runSeq(list,cb){var i=0;function nxt(){if(i>=list.length){if(cb)cb();return}var it=list[i];if(typeof it==="number"){i++;timer=setTimeout(nxt,it)}else{cls(Array.isArray(it)?it.join(" "):it);i++;timer=setTimeout(nxt,40+Math.random()*30)}}nxt()}function loop(){if(step===0){if(idx<msg.length){idx++;upd(msg.substring(0,idx));timer=setTimeout(loop,80+Math.random()*35);return}step=1;timer=setTimeout(loop,800);return}if(step===1){runSeq(["glitching",120,"",150,"burst",200,"burst",100,"",100,"glitching",180,""],function(){step=2;timer=setTimeout(loop,160)})}else if(step===2){runSeq(["burst",80,"",60,["burst","glitching"],120,["burst","glitching","tear"],60,["burst","tear"],40,"glitching",100,""],function(){step=3;timer=setTimeout(loop,80)})}else if(step===3){runSeq([["burst","glitching"],40,["burst","glitching","tear"],30,["tear","burst"],20,"cut"],function(){done()})}}upd("");timer=setTimeout(loop,300)})();</script>

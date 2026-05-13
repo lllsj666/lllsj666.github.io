@@ -13,7 +13,7 @@ tags:
   - 新手教程
   - DeepSeek
 description: "从零开始搭建 Claude Code AI 编码环境，涵盖 Git、Node.js、VS Code 安装，以及 Claude Code + CC Switch 中转配置的完整流程，适合纯小白跟着一步步操作。"
-cover: /img/文章/FG3.png
+cover: /img/文章/FG002.webp
 toc: 
 ---
 
