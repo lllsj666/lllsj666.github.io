@@ -4496,7 +4496,7 @@ a.featured-card:hover .featured-card-btn {
     transform: translate(-50%, -50%) !important;
     padding-left: 20px !important;
     padding-right: 20px !important;
-    z-index: 2 !important;
+    z-index: 20 !important;
   }
 
   #page-header.full_page #site-title {
@@ -4514,14 +4514,38 @@ a.featured-card:hover .featured-card-btn {
   }
 }
 
-/* --- 首页社交图标：和 subtitle 保持间距 --- */
+/* --- 首页社交图标：提升层级，保证可点击 --- */
 @media screen and (max-width: 768px) {
   #page-header.full_page #site-social {
+    position: relative !important;
+    z-index: 25 !important;
+    pointer-events: auto !important;
     margin-top: 6px !important;
   }
 
   #page-header.full_page .social-icon {
+    position: relative !important;
+    z-index: 25 !important;
+    pointer-events: auto !important;
     font-size: 1.1rem !important;
+  }
+}
+
+/* --- 下滑按钮：固定底部，不挡中间内容 --- */
+@media screen and (max-width: 768px) {
+  #page-header.full_page #scroll-down {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 18px !important;
+    transform: translateX(-50%) !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
+  }
+
+  #page-header.full_page #scroll-down .scroll-down-effects {
+    pointer-events: auto !important;
   }
 }
 
@@ -4608,8 +4632,6 @@ a.featured-card:hover .featured-card-btn {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
-    padding-right: 16px !important;
-  }
 
   #page-header.full_page #site-title {
     font-size: 1.55rem !important;
@@ -4640,6 +4662,10 @@ a.featured-card:hover .featured-card-btn {
   #footer .framework-info,
   #footer .footer_custom_text {
     font-size: 0.7rem !important;
+  }
+
+  #page-header.full_page #scroll-down {
+    bottom: 14px !important;
   }
 }
 
