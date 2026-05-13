@@ -4479,20 +4479,48 @@ a.featured-card:hover .featured-card-btn {
    22. Mobile P1 Polish - Header & Footer
    ======================================== */
 
-/* --- 首页全屏头图压缩 --- */
+/* --- 首页头图：适中高度，不和 banner 抢焦 --- */
 @media screen and (max-width: 768px) {
   #page-header.full_page {
-    height: 52vh !important;
-    min-height: 340px !important;
-    max-height: 520px !important;
+    height: 64svh !important;
+    min-height: 420px !important;
+    max-height: 560px !important;
+  }
+}
+
+/* --- 首页标题区：居中稳定，不上浮 --- */
+@media screen and (max-width: 768px) {
+  #page-header.full_page #site-info {
+    top: 52% !important;
+    transform: translateY(-50%) !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    z-index: 2 !important;
   }
 
   #page-header.full_page #site-title {
     font-size: 1.8rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 6px !important;
   }
 
   #page-header.full_page #site-subtitle {
-    font-size: 0.9rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.5 !important;
+    min-height: 1.5em !important;      /* 防止打字机切换跳动 */
+    margin-top: 4px !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+/* --- 首页社交图标：和 subtitle 保持间距 --- */
+@media screen and (max-width: 768px) {
+  #page-header.full_page #site-social {
+    margin-top: 6px !important;
+  }
+
+  #page-header.full_page .social-icon {
+    font-size: 1.1rem !important;
   }
 }
 
@@ -4533,12 +4561,57 @@ a.featured-card:hover .featured-card-btn {
   }
 }
 
+/* --- 深色模式：首页标题 / subtitle / 社交图标 --- */
+@media screen and (max-width: 768px) {
+  [data-theme="dark"] #page-header.full_page #site-title {
+    color: #f1f5f9 !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
+  }
+
+  [data-theme="dark"] #page-header.full_page #site-subtitle {
+    color: #cbd5e1 !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.45) !important;
+  }
+
+  [data-theme="dark"] #page-header.full_page .social-icon {
+    color: rgba(203,213,225,0.85) !important;
+  }
+
+  [data-theme="dark"] #footer {
+    color: #94a3b8 !important;
+  }
+
+  [data-theme="dark"] #footer a {
+    color: #cbd5e1 !important;
+  }
+
+  [data-theme="dark"] #footer .copyright,
+  [data-theme="dark"] #footer .framework-info,
+  [data-theme="dark"] #footer .footer_custom_text {
+    color: #64748b !important;
+  }
+}
+
 /* --- 480px 进一步压缩 --- */
 @media screen and (max-width: 480px) {
   #page-header.full_page {
-    height: 46vh !important;
-    min-height: 300px !important;
-    max-height: 440px !important;
+    height: 60svh !important;
+    min-height: 380px !important;
+    max-height: 500px !important;
+  }
+
+  #page-header.full_page #site-info {
+    top: 52% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  #page-header.full_page #site-title {
+    font-size: 1.55rem !important;
+  }
+
+  #page-header.full_page #site-subtitle {
+    font-size: 0.84rem !important;
   }
 
   #page-header.not-home-page {
