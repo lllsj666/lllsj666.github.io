@@ -4535,14 +4535,54 @@ a.featured-card:hover .featured-card-btn {
   }
 }
 
-/* --- 下滑按钮：移动端隐藏 --- */
+/* --- 下滑按钮：移动端彻底隐藏 --- */
 @media screen and (max-width: 768px) {
   #page-header.full_page #scroll-down,
-  #page-header.full_page .scroll-down-effects {
+  #page-header.full_page .scroll-down-effects,
+  #page-header.full_page #scroll-down *,
+  #page-header.full_page .scroll-down-effects *,
+  #page-header.full_page #scroll-down i,
+  #page-header.full_page #scroll-down svg,
+  #page-header.full_page #scroll-down span,
+  #page-header.full_page .scroll-down-effects i,
+  #page-header.full_page .scroll-down-effects svg,
+  #page-header.full_page .scroll-down-effects span,
+  #page-header.full_page i.fa-angle-down,
+  #page-header.full_page i.fas.fa-angle-down {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
     pointer-events: none !important;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    position: fixed !important;
+    left: -9999px !important;
+    top: -9999px !important;
+  }
+
+  #page-header.full_page #scroll-down::before,
+  #page-header.full_page #scroll-down::after,
+  #page-header.full_page .scroll-down-effects::before,
+  #page-header.full_page .scroll-down-effects::after {
+    content: none !important;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
+    animation: none !important;
   }
 }
 
@@ -4580,6 +4620,119 @@ a.featured-card:hover .featured-card-btn {
   #footer .framework-info,
   #footer .footer_custom_text {
     font-size: 0.75rem !important;
+  }
+}
+
+/* --- 首页文章卡片：移动端紧凑布局 --- */
+@media screen and (max-width: 768px) {
+  #recent-posts {
+    padding: 0 12px !important;
+  }
+
+  #recent-posts .recent-post-item {
+    flex-direction: column !important;
+    border-radius: 14px !important;
+    margin-bottom: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+  }
+
+  #recent-posts .recent-post-item .post_cover {
+    width: 100% !important;
+  }
+
+  #recent-posts .recent-post-item .post_cover img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 190px !important;
+    object-fit: cover !important;
+  }
+
+  #recent-posts .recent-post-item .recent-post-info {
+    padding: 14px 14px 16px !important;
+    width: 100% !important;
+  }
+
+  #recent-posts .recent-post-item .article-title,
+  #recent-posts .recent-post-item .article-title a {
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    line-height: 1.45 !important;
+    margin-bottom: 8px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  #recent-posts .recent-post-item .content,
+  #recent-posts .recent-post-item .article-content {
+    font-size: 0.9rem !important;
+    line-height: 1.65 !important;
+    margin-top: 8px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  #recent-posts .recent-post-item .article-meta-wrap,
+  #recent-posts .recent-post-item .post-meta {
+    font-size: 0.78rem !important;
+    line-height: 1.6 !important;
+    flex-wrap: wrap !important;
+    gap: 4px 8px !important;
+    opacity: 0.78 !important;
+  }
+}
+
+/* --- P3 首页布局与阅读体验 --- */
+@media screen and (max-width: 768px) {
+  #content-inner {
+    padding: 14px 0 0 !important;
+  }
+
+  #content-inner.layout {
+    max-width: 100% !important;
+  }
+
+  #recent-posts {
+    margin-top: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #aside-content {
+    display: none !important;
+  }
+
+  #recent-posts .recent-post-item {
+    position: relative !important;
+    -webkit-tap-highlight-color: transparent;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease !important;
+  }
+
+  #recent-posts .recent-post-item:hover {
+    transform: none !important;
+  }
+
+  #recent-posts .recent-post-item a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.06);
+  }
+
+  #pagination {
+    margin: 18px 0 8px !important;
+    padding: 0 12px !important;
+    text-align: center !important;
+  }
+
+  #pagination .page-number,
+  #pagination .extend {
+    min-width: 34px !important;
+    height: 34px !important;
+    line-height: 34px !important;
+    margin: 0 3px !important;
+    border-radius: 10px !important;
   }
 }
 
@@ -4663,6 +4816,55 @@ a.featured-card:hover .featured-card-btn {
 
   #page-header.full_page #scroll-down {
     display: none !important;
+  }
+
+  #recent-posts {
+    padding: 0 10px !important;
+  }
+
+  #recent-posts .recent-post-item {
+    margin-bottom: 14px !important;
+    border-radius: 12px !important;
+  }
+
+  #recent-posts .recent-post-item .post_cover img {
+    max-height: 170px !important;
+  }
+
+  #recent-posts .recent-post-item .recent-post-info {
+    padding: 12px 12px 14px !important;
+  }
+
+  #recent-posts .recent-post-item .article-title,
+  #recent-posts .recent-post-item .article-title a {
+    font-size: 1rem !important;
+  }
+
+  #recent-posts .recent-post-item .content,
+  #recent-posts .recent-post-item .article-content {
+    font-size: 0.88rem !important;
+  }
+
+  #content-inner {
+    padding-top: 12px !important;
+  }
+
+  #recent-posts {
+    padding: 0 10px !important;
+  }
+
+  #pagination {
+    padding: 0 10px !important;
+    margin-top: 16px !important;
+  }
+
+  #pagination .page-number,
+  #pagination .extend {
+    min-width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    margin: 0 2px !important;
+    border-radius: 9px !important;
   }
 }
 
