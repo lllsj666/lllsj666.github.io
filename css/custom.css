@@ -1,6 +1,7 @@
 /* ========================================
    Custom CSS — 覆的博客
-   最后更新: 2026-05-13
+   最后更新: 2026-05-18  ·  约 5050 行  ·  22 个编号分区
+   维护规则: docs/maintenance-rules.md §4
    ========================================
 
    TABLE OF CONTENTS
@@ -26,6 +27,7 @@
    19.  Home Hero (首页 Hero 模块)
    20.  Featured Posts (首页精选阅读)
    21.  Resource Placeholder (待补充资源卡片)
+   22.  Mobile P1 Polish (头图/页脚/卡片/侧栏/菜单/背景分离)
    ======================================== */
 
 /* ========================================
@@ -4481,7 +4483,7 @@ a.featured-card:hover .featured-card-btn {
 
 /* --- 首页头图：适中高度，不和 banner 抢焦 --- */
 @media screen and (max-width: 768px) {
-  #page-header.full_page {
+  #page-header {
     height: 64svh !important;
     min-height: 420px !important;
     max-height: 560px !important;
@@ -4490,7 +4492,7 @@ a.featured-card:hover .featured-card-btn {
 
 /* --- 首页标题区：居中稳定，不上浮 --- */
 @media screen and (max-width: 768px) {
-  #page-header.full_page #site-info {
+  #page-header #site-info {
     top: 50svh !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
@@ -4499,56 +4501,76 @@ a.featured-card:hover .featured-card-btn {
     z-index: 20 !important;
   }
 
-  #page-header.full_page #site-title {
+  #page-header #site-info #site-title {
     font-size: 1.8rem !important;
     line-height: 1.25 !important;
     margin-bottom: 6px !important;
+    color: #0f172a !important;
+    text-shadow:
+      0 0 14px rgba(255,255,255,0.92),
+      0 1px 4px rgba(0,0,0,0.35) !important;
   }
 
-  #page-header.full_page #site-subtitle {
+  #page-header #site-info #site-subtitle {
     font-size: 0.92rem !important;
     line-height: 1.5 !important;
-    min-height: 1.5em !important;      /* 防止打字机切换跳动 */
+    min-height: 1.5em !important;
     margin-top: 4px !important;
     margin-bottom: 10px !important;
+    color: #0f172a !important;
+    text-shadow:
+      0 0 16px rgba(255,255,255,0.96),
+      0 0 4px rgba(255,255,255,0.9),
+      0 2px 6px rgba(0,0,0,0.4) !important;
+  }
+
+  #page-header #site-info #subtitle {
+    display: inline-block !important;
+    padding: 3px 12px !important;
+    border-radius: 6px !important;
+    background: rgba(255, 255, 255, 0.28) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    color: #0f172a !important;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.6) !important;
   }
 }
 
 /* --- 首页社交图标：最高层级，保证绝对可点击 --- */
 @media screen and (max-width: 768px) {
-  #page-header.full_page #site-social {
+  #page-header #site-social {
     position: relative !important;
     z-index: 30 !important;
     pointer-events: auto !important;
     margin-top: 6px !important;
   }
 
-  #page-header.full_page .social-icon,
-  #page-header.full_page #site-info a {
+  #page-header #site-social .social-icon,
+  #page-header #site-info a {
     position: relative !important;
     z-index: 30 !important;
     pointer-events: auto !important;
   }
 
-  #page-header.full_page .social-icon {
+  #page-header #site-social .social-icon {
     font-size: 1.1rem !important;
   }
 }
 
 /* --- 下滑按钮：移动端彻底隐藏 --- */
 @media screen and (max-width: 768px) {
-  #page-header.full_page #scroll-down,
-  #page-header.full_page .scroll-down-effects,
-  #page-header.full_page #scroll-down *,
-  #page-header.full_page .scroll-down-effects *,
-  #page-header.full_page #scroll-down i,
-  #page-header.full_page #scroll-down svg,
-  #page-header.full_page #scroll-down span,
-  #page-header.full_page .scroll-down-effects i,
-  #page-header.full_page .scroll-down-effects svg,
-  #page-header.full_page .scroll-down-effects span,
-  #page-header.full_page i.fa-angle-down,
-  #page-header.full_page i.fas.fa-angle-down {
+  #page-header #scroll-down,
+  #page-header .scroll-down-effects,
+  #page-header #scroll-down *,
+  #page-header .scroll-down-effects *,
+  #page-header #scroll-down i,
+  #page-header #scroll-down svg,
+  #page-header #scroll-down span,
+  #page-header .scroll-down-effects i,
+  #page-header .scroll-down-effects svg,
+  #page-header .scroll-down-effects span,
+  #page-header i.fa-angle-down,
+  #page-header i.fas.fa-angle-down {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
@@ -4571,10 +4593,10 @@ a.featured-card:hover .featured-card-btn {
     top: -9999px !important;
   }
 
-  #page-header.full_page #scroll-down::before,
-  #page-header.full_page #scroll-down::after,
-  #page-header.full_page .scroll-down-effects::before,
-  #page-header.full_page .scroll-down-effects::after {
+  #page-header #scroll-down::before,
+  #page-header #scroll-down::after,
+  #page-header .scroll-down-effects::before,
+  #page-header .scroll-down-effects::after {
     content: none !important;
     display: none !important;
     visibility: hidden !important;
@@ -4693,20 +4715,24 @@ a.featured-card:hover .featured-card-btn {
   }
 
   #content-inner.layout {
+    display: flex !important;
+    flex-direction: column !important;
     max-width: 100% !important;
   }
 
   #recent-posts {
     margin-top: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
-  }
-
-  #aside-content {
-    display: none !important;
+    order: 2 !important;
   }
 
   #recent-posts .recent-post-item {
+    display: flex !important;
+    flex-direction: column !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     position: relative !important;
     -webkit-tap-highlight-color: transparent;
     transition: box-shadow 0.2s ease, background-color 0.2s ease !important;
@@ -4736,20 +4762,156 @@ a.featured-card:hover .featured-card-btn {
   }
 }
 
+/* --- P3.1 侧栏恢复 + 头像卡片紧凑 + 菜单缩小 --- */
+@media screen and (max-width: 768px) {
+  /* 侧栏整行 + 紧凑 */
+  #aside-content {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 12px !important;
+    margin: 0 0 14px !important;
+    box-sizing: border-box !important;
+    order: 1 !important;
+  }
+
+  /* 只显示头像卡片 */
+  #aside-content .card-widget:not(.card-info) {
+    display: none !important;
+  }
+
+  #aside-content .card-info {
+    display: block !important;
+    margin: 0 0 14px !important;
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* 头像 */
+  #aside-content .card-info .avatar-img,
+  #aside-content .avatar-img {
+    width: 64px !important;
+    height: 64px !important;
+    margin: 0 auto 8px !important;
+  }
+
+  #aside-content .card-info .avatar-img img,
+  #aside-content .avatar-img img {
+    width: 64px !important;
+    height: 64px !important;
+    object-fit: cover !important;
+  }
+
+  /* 作者名 */
+  #aside-content .author-info-name {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+    color: #0f172a !important;
+    margin: 4px 0 4px !important;
+    text-align: center !important;
+  }
+
+  /* 简介 */
+  #aside-content .author-info-description {
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+    color: #334155 !important;
+    margin: 4px 0 8px !important;
+    text-align: center !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* 站点数据 */
+  #aside-content .site-data {
+    margin-top: 8px !important;
+    padding-top: 8px !important;
+  }
+
+  /* 菜单面板缩小 */
+  #sidebar-menus {
+    width: 78vw !important;
+    max-width: 280px !important;
+    padding: 14px 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  #sidebar-menus .menus_items {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #sidebar-menus .menus_items .menus_item {
+    margin: 2px 0 !important;
+  }
+
+  #sidebar-menus .menus_items .site-page {
+    min-height: 38px !important;
+    line-height: 38px !important;
+    padding: 0 10px !important;
+    font-size: 0.95rem !important;
+    border-radius: 10px !important;
+  }
+
+  #sidebar-menus .menus_item_child {
+    margin: 2px 0 4px !important;
+    padding: 4px 0 4px 12px !important;
+  }
+
+  #sidebar-menus .menus_item_child li,
+  #sidebar-menus .menus_item_child li a {
+    min-height: 32px !important;
+    line-height: 32px !important;
+    font-size: 0.88rem !important;
+  }
+
+  #menu-mask {
+    background: rgba(0, 0, 0, 0.35) !important;
+  }
+}
+
 /* --- 深色模式：首页标题 / subtitle / 社交图标 --- */
 @media screen and (max-width: 768px) {
-  [data-theme="dark"] #page-header.full_page #site-title {
+  [data-theme="dark"] #page-header #site-info #site-title {
     color: #f1f5f9 !important;
     text-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
   }
 
-  [data-theme="dark"] #page-header.full_page #site-subtitle {
-    color: #cbd5e1 !important;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.45) !important;
+  [data-theme="dark"] #page-header #site-info #site-subtitle {
+    color: #e2e8f0 !important;
+    text-shadow:
+      0 0 10px rgba(0,0,0,0.55),
+      0 1px 3px rgba(0,0,0,0.5) !important;
   }
 
-  [data-theme="dark"] #page-header.full_page .social-icon {
+  [data-theme="dark"] #page-header #site-info #subtitle {
+    color: #e2e8f0 !important;
+    background: transparent !important;
+    display: inline !important;
+    padding: 0 !important;
+    text-shadow:
+      0 0 10px rgba(0,0,0,0.55),
+      0 1px 3px rgba(0,0,0,0.5) !important;
+  }
+
+  [data-theme="dark"] #page-header #site-social .social-icon {
     color: rgba(203,213,225,0.85) !important;
+  }
+
+  [data-theme="dark"] #aside-content .card-info {
+    background: rgba(15,23,42,0.96) !important;
+  }
+
+  [data-theme="dark"] #aside-content .author-info-name {
+    color: #f1f5f9 !important;
+  }
+
+  [data-theme="dark"] #aside-content .author-info-description {
+    color: #cbd5e1 !important;
   }
 
   [data-theme="dark"] #footer {
@@ -4769,13 +4931,13 @@ a.featured-card:hover .featured-card-btn {
 
 /* --- 480px 进一步压缩 --- */
 @media screen and (max-width: 480px) {
-  #page-header.full_page {
+  #page-header {
     height: 60svh !important;
     min-height: 380px !important;
     max-height: 500px !important;
   }
 
-  #page-header.full_page #site-info {
+  #page-header #site-info {
     top: 50svh !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
@@ -4783,11 +4945,11 @@ a.featured-card:hover .featured-card-btn {
     padding-right: 16px !important;
   }
 
-  #page-header.full_page #site-title {
+  #page-header #site-info #site-title {
     font-size: 1.55rem !important;
   }
 
-  #page-header.full_page #site-subtitle {
+  #page-header #site-info #site-subtitle {
     font-size: 0.84rem !important;
   }
 
@@ -4814,7 +4976,7 @@ a.featured-card:hover .featured-card-btn {
     font-size: 0.7rem !important;
   }
 
-  #page-header.full_page #scroll-down {
+  #page-header #scroll-down {
     display: none !important;
   }
 
@@ -4849,6 +5011,39 @@ a.featured-card:hover .featured-card-btn {
     padding-top: 12px !important;
   }
 
+  #aside-content {
+    padding: 0 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  #aside-content .card-info {
+    padding: 12px 10px !important;
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  #aside-content .card-info .avatar-img,
+  #aside-content .avatar-img {
+    width: 56px !important;
+    height: 56px !important;
+    margin-bottom: 6px !important;
+  }
+
+  #aside-content .card-info .avatar-img img,
+  #aside-content .avatar-img img {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  #aside-content .author-info-name {
+    font-size: 0.96rem !important;
+  }
+
+  #aside-content .author-info-description {
+    font-size: 0.8rem !important;
+    -webkit-line-clamp: 1 !important;
+  }
+
   #recent-posts {
     padding: 0 10px !important;
   }
@@ -4865,6 +5060,102 @@ a.featured-card:hover .featured-card-btn {
     line-height: 32px !important;
     margin: 0 2px !important;
     border-radius: 9px !important;
+  }
+
+  #sidebar-menus {
+    width: 76vw !important;
+    max-width: 260px !important;
+    padding: 12px 10px !important;
+  }
+
+  #sidebar-menus .menus_items .site-page {
+    min-height: 36px !important;
+    line-height: 36px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* --- PC / 手机端背景图分离 --- */
+@media screen and (max-width: 768px) {
+  #web_bg {
+    background-image: url(/img/wallpaper-mobile.webp) !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+/* ========================================
+   23. Card-Info — 浅色通透 + 深色高对比
+   ======================================== */
+
+/* 浅色模式：让背景透出来，不要厚重白底 */
+@media screen and (max-width: 768px) {
+  #aside-content .card-widget.card-info {
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  }
+
+  #aside-content .card-widget.card-info .author-info-name {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  #aside-content .card-widget.card-info .author-info-description {
+    color: #334155 !important;
+  }
+
+  #aside-content .card-widget.card-info .site-data .headline {
+    color: #475569 !important;
+  }
+
+  #aside-content .card-widget.card-info .site-data .length-num {
+    color: #0f172a !important;
+  }
+
+  #aside-content .card-widget.card-info #card-info-btn {
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: #334155 !important;
+    border: 1px solid rgba(148, 163, 184, 0.35) !important;
+  }
+}
+
+/* 深色模式：提高对比度，字要能看清 */
+@media screen and (max-width: 768px) {
+  [data-theme="dark"] #aside-content .card-widget.card-info {
+    background: rgba(15, 23, 42, 0.88) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  [data-theme="dark"] #aside-content .card-widget.card-info .author-info-name {
+    color: #f8fafc !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme="dark"] #aside-content .card-widget.card-info .author-info-description {
+    color: #e2e8f0 !important;
+  }
+
+  [data-theme="dark"] #aside-content .card-widget.card-info .site-data .headline {
+    color: #cbd5e1 !important;
+  }
+
+  [data-theme="dark"] #aside-content .card-widget.card-info .site-data .length-num {
+    color: #f8fafc !important;
+  }
+
+  [data-theme="dark"] #aside-content .card-widget.card-info .card-info-social-icons .social-icon {
+    color: rgba(226, 232, 240, 0.85) !important;
+  }
+
+  [data-theme="dark"] #aside-content .card-widget.card-info #card-info-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
   }
 }
 
