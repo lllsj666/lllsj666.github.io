@@ -37,7 +37,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   z-index: -1;
   pointer-events: none;
@@ -4507,8 +4507,8 @@ a.featured-card:hover .featured-card-btn {
     margin-bottom: 6px !important;
     color: #0f172a !important;
     text-shadow:
-      0 0 14px rgba(255,255,255,0.92),
-      0 1px 4px rgba(0,0,0,0.35) !important;
+      0 0 10px rgba(255,255,255,0.9),
+      0 2px 6px rgba(0,0,0,0.45) !important;
   }
 
   #page-header #site-info #site-subtitle {
@@ -4517,22 +4517,17 @@ a.featured-card:hover .featured-card-btn {
     min-height: 1.5em !important;
     margin-top: 4px !important;
     margin-bottom: 10px !important;
-    color: #0f172a !important;
+    color: #1e293b !important;
     text-shadow:
-      0 0 16px rgba(255,255,255,0.96),
-      0 0 4px rgba(255,255,255,0.9),
-      0 2px 6px rgba(0,0,0,0.4) !important;
+      0 0 8px rgba(255,255,255,0.88),
+      0 2px 4px rgba(0,0,0,0.4) !important;
   }
 
   #page-header #site-info #subtitle {
-    display: inline-block !important;
-    padding: 3px 12px !important;
-    border-radius: 6px !important;
-    background: rgba(255, 255, 255, 0.28) !important;
-    backdrop-filter: blur(6px) !important;
-    -webkit-backdrop-filter: blur(6px) !important;
-    color: #0f172a !important;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.6) !important;
+    color: #1e293b !important;
+    text-shadow:
+      0 0 8px rgba(255,255,255,0.88),
+      0 2px 4px rgba(0,0,0,0.4) !important;
   }
 }
 
@@ -4890,9 +4885,6 @@ a.featured-card:hover .featured-card-btn {
 
   [data-theme="dark"] #page-header #site-info #subtitle {
     color: #e2e8f0 !important;
-    background: transparent !important;
-    display: inline !important;
-    padding: 0 !important;
     text-shadow:
       0 0 10px rgba(0,0,0,0.55),
       0 1px 3px rgba(0,0,0,0.5) !important;
@@ -5156,6 +5148,41 @@ a.featured-card:hover .featured-card-btn {
     background: rgba(255, 255, 255, 0.08) !important;
     color: #e2e8f0 !important;
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+}
+
+/* --- 右侧缝隙修复 --- */
+@media screen and (max-width: 768px) {
+  html,
+  body,
+  #web_bg,
+  #body-wrap {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  #particle-bg {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #web_bg {
+    height: 100svh !important;
+  }
+}
+
+/* --- 深色模式：消除卡片下方厚重黑底 --- */
+@media screen and (max-width: 768px) {
+  [data-theme="dark"] body {
+    background: transparent !important;
+  }
+
+  [data-theme="dark"] #web_bg {
+    opacity: 1 !important;
+  }
+
+  [data-theme="dark"] #aside-content .card-widget.card-info {
+    background: rgba(15, 23, 42, 0.94) !important;
   }
 }
 
